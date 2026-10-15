@@ -1,0 +1,7 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Problem with a TGDP template or guide
+    url: https://www.thegooddocsproject.dev/feedback
+    about: >-
+      The files under references/ are copied without changes from The Good Docs
+      Project. Send feedback about their wording or structure to TGDP, not here.

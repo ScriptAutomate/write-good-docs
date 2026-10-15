@@ -1,0 +1,132 @@
+name: Bug report
+description: Report a problem with the write-good-docs skill or its scripts.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please report one bug per issue.
+
+        Give the issue a title that names the problem, the action, and where it
+        happened. For example: "check-leftovers.sh misses placeholders in indented
+        lists" or "Agent writes a tutorial when asked for a how-to".
+
+        Is the problem in a TGDP template or guide itself, such as wording or
+        structure under `references/`? Report it to
+        [The Good Docs Project](https://www.thegooddocsproject.dev/feedback) instead. This
+        repository copies those files without changes.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you report
+      options:
+        - label: I searched the existing issues and this bug isn't already reported.
+          required: true
+        - label: I reproduced the bug more than once.
+          required: false
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Where does the bug happen?
+      options:
+        - The skill (what the agent writes or reviews)
+        - scripts/check-leftovers.sh
+        - maintainer/sync-references.py
+        - README.md or CONTRIBUTING.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: If the title isn't enough, describe the bug in 3–4 sentences.
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        Include what applies to your bug. To find the skill version, run
+        `git -C <skill-dir> rev-parse --short HEAD` in the directory where you
+        installed the skill.
+      value: |
+        - write-good-docs commit:
+        - AI agent and version (for example, Claude Code 2.x):
+        - Model, if known:
+        - Operating system:
+        - Shell and awk version (for check-leftovers.sh):
+        - Python version (for sync-references.py):
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: |
+        List the steps that led to the bug. For skill bugs, include the exact
+        request or slash command you gave the agent, such as
+        `/write-good-docs how-to rotating API keys`. Note anything unusual along
+        the way, such as unexpected output or a step that took much longer than usual.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: |
+        Describe what happened. For skill bugs, name the content type the agent
+        picked and what was wrong with its draft or review. Describe only what
+        you saw, not why you think it happened.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Describe what you expected to happen instead.
+    validations:
+      required: false
+
+  - type: textarea
+    id: proof
+    attributes:
+      label: Proof
+      description: Paste script output, error messages, or an excerpt of the agent's draft. You can also attach screenshots.
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: test-data
+    attributes:
+      label: Test data
+      description: |
+        If the bug only happens with a specific input, share it. For example, the
+        draft you passed to `check-leftovers.sh`, or the `--zip` archive and tag
+        you passed to `sync-references.py`. Remove any private or sensitive
+        details, then check that the cleaned-up input still triggers the bug.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: |
+        Add anything else that might matter, such as other skills you have
+        installed or the project you were documenting. A maintainer might ask
+        you follow-up questions after you submit this report.
+    validations:
+      required: false

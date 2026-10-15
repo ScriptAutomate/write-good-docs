@@ -153,7 +153,7 @@ it to a newer TGDP release. Updating the templates is a maintainer task;
 you don't need to do it to use the skill.
 
 Report problems with the templates or guides themselves to
-[The Good Docs Project](https://gitlab.com/tgdp/templates).
+[The Good Docs Project](https://www.thegooddocsproject.dev/feedback).
 
 ## How to get help
 

@@ -28,7 +28,7 @@ if [[ -n $placeholders ]]; then
     found=1
   fi
 fi
-boiler=$(grep -nE 'read the accompanying \[guide\]|Explore other templates from|thegooddocsproject\.dev/feedback' <<<"$prose" || true)
+boiler=$(grep -nE 'read the accompanying \[guide\]|Explore other templates from|thegooddocsproject\.dev/feedback/?\?template=' <<<"$prose" || true)
 if [[ -n $boiler ]]; then
   echo "leftover TGDP boilerplate:"
   echo "$boiler"

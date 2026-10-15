@@ -1,6 +1,7 @@
 ---
 name: write-good-docs
 description: Drafts and reviews software docs using The Good Docs Project templates and guides — picks the right content type (README, how-to, tutorial, concept, reference, release notes, API docs, community docs, and more), then fills it from real project facts. Use when asked to write, draft, restructure, or review a doc — e.g. "write a README for X", "draft a how-to / tutorial", "write release notes / a changelog", "add a CONTRIBUTING guide / code of conduct", "document this API", "is this README missing anything", or "which kind of doc should I write".
+license: MIT-0
 argument-hint: "[content-type] [what to document]"
 ---
 

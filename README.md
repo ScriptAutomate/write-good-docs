@@ -157,8 +157,8 @@ Report problems with the templates or guides themselves to
 
 ## How to get help
 
-- For problems with the skill or the scripts, open an issue in this
-  repository.
+- For problems with the skill or the scripts,
+  [open an issue](https://github.com/ScriptAutomate/write-good-docs/issues/new/choose).
 - For questions about the templates and guides, visit
   [thegooddocsproject.dev](https://thegooddocsproject.dev/).
 

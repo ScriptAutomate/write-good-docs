@@ -116,7 +116,8 @@ Running the script twice with the same tag produces no changes.
 
 ## Report issues
 
-Open an issue in this repository and choose the **Bug report** form. It
+[Open an issue](https://github.com/ScriptAutomate/write-good-docs/issues/new/choose)
+and choose the **Bug report** form. It
 asks for the request you gave the agent, what it produced, and what you
 expected. The form is defined in `.github/ISSUE_TEMPLATE/bug_report.yml`.
 

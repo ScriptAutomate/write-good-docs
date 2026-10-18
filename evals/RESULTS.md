@@ -1,10 +1,53 @@
 # Benchmark results
 
 Does write-good-docs improve the docs an AI agent writes? This page records
-the measured answer for each model tested. It's a snapshot: re-run the
-benchmark whenever `SKILL.md` changes and add a new dated results folder.
+the measured answer for each model tested. Each section is a dated
+snapshot, newest first: re-run the benchmark whenever `SKILL.md` changes
+and add a new dated results folder.
 
-## How this was measured
+## 2026-10-18: explicit rules for procedures, URLs and release notes
+
+The 2026-10-15 benchmark (below) showed no gain for Haiku on how-tos or
+release notes. Commit
+[`ef4096b`](https://github.com/ScriptAutomate/write-good-docs/commit/ef4096b)
+added a "Check before you deliver" step and type-specific rules to
+`SKILL.md`. These runs measured that change. They use the same tasks, test
+project and blind Opus 5.5 grading as before, with the stricter checks
+from commit
+[`b8e308c`](https://github.com/ScriptAutomate/write-good-docs/commit/b8e308c).
+Those checks don't change any earlier with-skill score.
+
+**Haiku 4.5, old skill against new skill, in the same round (3 runs each):**
+
+| Task | Old skill | New skill | Change |
+|---|---|---|---|
+| How-to | 74% | 85% | +11 points |
+| Release notes | 92% | 100% | +8 points |
+
+- **Release notes:** internal CI, test and refactor changes were listed in 2
+  of 3 old-skill runs and in none with the new skill.
+- **How-to:** 2 of 3 runs now say which token setting wins (0 of 3 before).
+  Condition-first steps improved only from 0 of 3 to 1 of 3; Haiku still
+  often writes "Option A/B".
+
+**Regression check: the new skill against the 2026-10-15 with-skill scores**
+
+| Model | README | How-to | Release notes | Review |
+|---|---|---|---|---|
+| Opus 5.5 | not re-run | 100% (was 100%) | 100% (was 100%) | not re-run |
+| Sonnet 5 | 100% (was 100%) | 100% (was 96%) | 100% (was 100%) | 100% (was 100%) |
+| Haiku 4.5 | 93% (was 96%) | 85% (was 82%) | 100% (was 88%) | 100% (was 100%) |
+
+The only dip is Haiku's README: one more failed check out of 27, within
+the noise of 3 runs. One of those READMEs invented an API docs URL, which
+the new rule is meant to prevent. For Haiku, the rule reduces invented URLs
+but doesn't eliminate them.
+
+Raw results are in [`results/2026-10-18/`](results/2026-10-18/).
+
+## 2026-10-15: with and without the skill
+
+### How this was measured
 
 | | |
 |---|---|
@@ -18,7 +61,7 @@ benchmark whenever `SKILL.md` changes and add a new dated results folder.
 Raw per-run scores, token counts and analyst notes are in
 [`results/2026-10-15/`](results/2026-10-15/).
 
-## Summary
+### Summary
 
 | Writer model | With skill | Without skill | Gain | Extra tokens |
 |---|---|---|---|---|
@@ -30,7 +73,7 @@ The skill improved the docs for every model tested. Haiku with the skill
 (91%) scored higher than Opus and Sonnet without it (83% and 88%), and used
 fewer tokens than either.
 
-## Per task
+### Per task
 
 | Task | Opus: with / without | Sonnet: with / without | Haiku: with / without |
 |---|---|---|---|
@@ -39,7 +82,7 @@ fewer tokens than either.
 | Release notes | 100% / 83% | 100% / 92% | 88% / 88% |
 | README review | 94% / 72% | 100% / 83% | 100% / 78% |
 
-## What the skill changes
+### What the skill changes
 
 Without the skill, every model left the same gaps. With it, most of them
 closed:
@@ -54,7 +97,7 @@ closed:
 - **Release notes:** without the skill, Opus and Sonnet sometimes listed every
   commit hash and internal change. With the skill they didn't.
 
-## Where the skill falls short
+### Where the skill falls short
 
 On Haiku, the gains came from the README (+14 points) and the review (+22),
 with no gain on the how-to or release notes. Even with the skill, 2 of 3
@@ -64,7 +107,7 @@ Haiku runs:
 - listed internal refactor and CI changes as release-note items
 - presented alternatives as "Option A/B" rather than conditional steps
 
-## Caveats
+### Caveats
 
 - **Small sample:** 3 runs per task and setup. The overall gains are
   consistent across models, but per-task numbers can shift by one run.

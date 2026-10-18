@@ -1,0 +1,382 @@
+{
+  "metadata": {
+    "skill_name": "write-good-docs",
+    "skill_path": "https://github.com/ScriptAutomate/write-good-docs/tree/ef4096b",
+    "executor_model": "claude-haiku-4-5-20251001",
+    "analyzer_model": "claude-opus-5-5",
+    "timestamp": "2026-10-18T20:03:54Z",
+    "evals_run": [
+      1,
+      4
+    ],
+    "runs_per_configuration": 3,
+    "grader_model": "claude-opus-5-5"
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.89,
+        "passed": 8,
+        "failed": 1,
+        "total": 9,
+        "time_seconds": 68.7,
+        "tokens": 43486,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The README describes what tidyfeed does and why someone would use it before it mentions Python, requests, or other implementation technologies",
+          "passed": false,
+          "evidence": "Line 3 states what it does: 'tidyfeed fetches RSS and Atom feeds from the Tidyfeed API and exports them in clean JSON, CSV, or Markdown formats.' but gives no reason to use it. The only motivation before Python (line 13) is in the audience sentence (line 7) '...export feed items in structured formats for further processing, analysis, or publishing', which largely restates the function rather than explaining the benefit. Ambiguous at best, so failed."
+        },
+        {
+          "text": "The README states who the project is for (its intended users)",
+          "passed": true,
+          "evidence": "Line 7: 'This project is intended for developers and content curators who want to subscribe to multiple RSS and Atom feeds through a single API and export feed items in structured formats...'"
+        },
+        {
+          "text": "The README gives install steps that use pip and states the Python 3.14 or later requirement",
+          "passed": true,
+          "evidence": "Lines 19-23: 'Install tidyfeed using pip: pip install tidyfeed'; line 13: '* Python 3.14 or later'. Note: 'pip install tidyfeed' assumes a published package-index release, which nothing in the project establishes (it is about to go on GitHub); the step uses pip as required but may not work as written."
+        },
+        {
+          "text": "The README explains how to provide the API token: the TIDYFEED_TOKEN environment variable or the token key in ~/.config/tidyfeed/config.toml",
+          "passed": true,
+          "evidence": "Lines 25-35: config file at '~/.config/tidyfeed/config.toml' with 'token = \"tf_live_your_api_token_here\"'; 'Alternatively, set your API token in the `TIDYFEED_TOKEN` environment variable, which overrides the config file token.'"
+        },
+        {
+          "text": "The README states the license as Apache-2.0",
+          "passed": true,
+          "evidence": "Line 115: 'tidyfeed is licensed under the Apache License 2.0.'"
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 0.89,
+        "passed": 8,
+        "failed": 1,
+        "total": 9,
+        "time_seconds": 62.2,
+        "tokens": 41957,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The README describes what tidyfeed does and why someone would use it before it mentions Python, requests, or other implementation technologies",
+          "passed": true,
+          "evidence": "Line 3: 'A command-line tool that fetches RSS and Atom feeds from the Tidyfeed API and exports them as clean JSON, CSV, or Markdown.' and line 7 gives the why ('collect articles from multiple RSS and Atom feeds through a single API endpoint, then export the results in whatever format suits your workflow'). First mention of Python is line 23 ('Python 3.14 or later'); requests first appears at line 35."
+        },
+        {
+          "text": "The README states who the project is for (its intended users)",
+          "passed": true,
+          "evidence": "Line 13: 'tidyfeed is intended for developers and content aggregators who want to:' followed by three use cases."
+        },
+        {
+          "text": "The README gives install steps that use pip and states the Python 3.14 or later requirement",
+          "passed": true,
+          "evidence": "Line 32: 'pip install tidyfeed'; line 23: 'Python 3.14 or later'."
+        },
+        {
+          "text": "The README explains how to provide the API token: the TIDYFEED_TOKEN environment variable or the token key in ~/.config/tidyfeed/config.toml",
+          "passed": true,
+          "evidence": "Line 51: 'Edit `~/.config/tidyfeed/config.toml` and replace `tf_live_replace_me` with your API token.' (example shows 'token = ...'); line 65: 'You can also set your API token using the `TIDYFEED_TOKEN` environment variable; it overrides the token in the config file.'"
+        },
+        {
+          "text": "The README states the license as Apache-2.0",
+          "passed": true,
+          "evidence": "Line 160: 'tidyfeed is licensed under the [Apache License 2.0](LICENSE).' This matches LICENSE (SPDX Apache-2.0)."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": false,
+          "evidence": "not in project files: ['https://api.tidyfeed.example/docs', 'https://github.com/tidyfeed/tidyfeed/issues']"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 64.3,
+        "tokens": 42292,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The README describes what tidyfeed does and why someone would use it before it mentions Python, requests, or other implementation technologies",
+          "passed": true,
+          "evidence": "Line 3: 'Fetch RSS and Atom feeds from the Tidyfeed API and export them as clean JSON, CSV, or Markdown.' and the Project description section precede the first technology mention, 'Python 3.14 or later' under Project dependencies (line 17)."
+        },
+        {
+          "text": "The README states who the project is for (its intended users)",
+          "passed": true,
+          "evidence": "'## Who this project is for' — 'This project is intended for developers and content curators who want to fetch and export RSS and Atom feeds programmatically.'"
+        },
+        {
+          "text": "The README gives install steps that use pip and states the Python 3.14 or later requirement",
+          "passed": true,
+          "evidence": "'Install tidyfeed using pip.' with `pip install tidyfeed`; dependencies list '* Python 3.14 or later'."
+        },
+        {
+          "text": "The README explains how to provide the API token: the TIDYFEED_TOKEN environment variable or the token key in ~/.config/tidyfeed/config.toml",
+          "passed": true,
+          "evidence": "'Create a configuration file at `~/.config/tidyfeed/config.toml`' with `token = \"your_api_token_here\"`, and 'Optional: Set the `TIDYFEED_TOKEN` environment variable to override the token in the config file.'"
+        },
+        {
+          "text": "The README states the license as Apache-2.0",
+          "passed": true,
+          "evidence": "'## Terms of use' — 'tidyfeed is licensed under the Apache License 2.0.' (the same license as SPDX Apache-2.0 in LICENSE)."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 55.7,
+        "tokens": 38265,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response presents its findings before, or instead of, a full rewritten README",
+          "passed": true,
+          "evidence": "The response is entirely a list of findings ('Critical Missing Sections', 'Secondary Missing Sections', etc.) plus a recommended section order; no rewritten README is produced."
+        },
+        {
+          "text": "The findings are ranked or prioritised by impact on the reader",
+          "passed": true,
+          "evidence": "'Below is a review ... ranked by reader impact.' Sections grouped as 'Critical Missing Sections (High Impact)', 'Secondary Missing Sections (Medium Impact)', 'Lower-Impact Missing Sections', with per-item labels like '(CRITICAL)', '(HIGH IMPACT)'."
+        },
+        {
+          "text": "It flags that the description leads with technologies instead of what tidyfeed does and why to use it",
+          "passed": true,
+          "evidence": "Finding 1: 'The draft currently begins with technical implementation details (\"written in Python 3 using requests...\") instead of answering: *What does this tool do? Why should I care?*'"
+        },
+        {
+          "text": "It flags the missing statement of who the project is for",
+          "passed": true,
+          "evidence": "Finding 2: '\"Who is this project for\" section (HIGH IMPACT) Missing entirely.'"
+        },
+        {
+          "text": "It flags missing installation steps or prerequisites (Python 3.14+, installing with pip)",
+          "passed": true,
+          "evidence": "Finding 3: 'The \"Usage\" section jumps to command examples without explaining how to install first' ... 'Installation would likely be `pip install tidyfeed`' ... 'any prerequisites (Python 3.14+, as listed in pyproject.toml)'."
+        },
+        {
+          "text": "It flags that the config section lacks specifics, such as TIDYFEED_TOKEN, the config file path, or config.example.toml",
+          "passed": true,
+          "evidence": "Finding 5: 'Currently has a one-sentence \"Config\" section... Users don't know *how* to configure or *where* the config file lives' and recommends 'Copy config.example.toml to ~/.config/tidyfeed/config.toml'. (TIDYFEED_TOKEN is not mentioned, but the expectation lists examples with 'such as'.)"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 65.5,
+        "tokens": 38476,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response presents its findings before, or instead of, a full rewritten README",
+          "passed": true,
+          "evidence": "The response is a structured findings list ('## Critical Missing Sections (Ranked by Reader Impact)') with per-item recommendations and short snippets. It doesn't include a full rewritten README."
+        },
+        {
+          "text": "The findings are ranked or prioritised by impact on the reader",
+          "passed": true,
+          "evidence": "Heading '(Ranked by Reader Impact)', with numbered items 1-11 each tagged with an impact level, e.g. '**Impact: Critical**', '**Impact: High**', '**Impact: Low**'."
+        },
+        {
+          "text": "It flags that the description leads with technologies instead of what tidyfeed does and why to use it",
+          "passed": true,
+          "evidence": "#1: 'The current first paragraph focuses on the tech stack (\"written in Python 3 using requests and argparse…\") rather than what the project *does* and *why readers should care*.'"
+        },
+        {
+          "text": "It flags the missing statement of who the project is for",
+          "passed": true,
+          "evidence": "#4 '**Who is the project for** (MISSING)': 'Readers can't quickly determine if this tool is relevant to them.'"
+        },
+        {
+          "text": "It flags missing installation steps or prerequisites (Python 3.14+, installing with pip)",
+          "passed": true,
+          "evidence": "#2: 'Python 3.14 or later (from pyproject.toml)'. #3: 'No installation instructions', with a recommended step 'Install tidyfeed using pip: `pip install tidyfeed`'."
+        },
+        {
+          "text": "It flags that the config section lacks specifics, such as TIDYFEED_TOKEN, the config file path, or config.example.toml",
+          "passed": true,
+          "evidence": "#5: 'Where is the config file located? (Should be ~/.config/tidyfeed/config.toml per config.example.toml comment)' and 'Can I override it? (Yes, via TIDYFEED_TOKEN environment variable per git log, but not documented)'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 55.5,
+        "tokens": 39502,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response presents its findings before, or instead of, a full rewritten README",
+          "passed": true,
+          "evidence": "response.md contains only a review: headings 'Missing Sections (Ranked by Reader Impact)', 'Current Content Issues', 'Recommendations'; no rewritten README."
+        },
+        {
+          "text": "The findings are ranked or prioritised by impact on the reader",
+          "passed": true,
+          "evidence": "Line 7 'Missing Sections (Ranked by Reader Impact)' with tiers 'Critical (High Impact)', 'Important (Medium-High Impact)', 'Secondary (Low-Medium Impact)', and a numbered priority list under 'Recommendations'."
+        },
+        {
+          "text": "It flags that the description leads with technologies instead of what tidyfeed does and why to use it",
+          "passed": true,
+          "evidence": "Line 14: 'Current state: Minimal technical description (\"tidyfeed is written in Python 3 using requests...\")' / 'Missing: Clear explanation of *what the project does* and *why users should care*'; line 95: 'Opens with implementation details (\"written in Python 3 using requests and argparse...\") rather than user benefits'."
+        },
+        {
+          "text": "It flags the missing statement of who the project is for",
+          "passed": true,
+          "evidence": "Lines 20-24: '**Who This Project Is For** ... Current state: Completely missing ... Users don't know if they are the intended audience'."
+        },
+        {
+          "text": "It flags missing installation steps or prerequisites (Python 3.14+, installing with pip)",
+          "passed": true,
+          "evidence": "Lines 27-30: 'Installation Instructions ... Completely missing ... Step-by-step instructions on how to install the package'; line 106 'Step-by-step pip install instructions'; line 55: 'Actual requirements: Python >=3.14 (from pyproject.toml)'."
+        },
+        {
+          "text": "It flags that the config section lacks specifics, such as TIDYFEED_TOKEN, the config file path, or config.example.toml",
+          "passed": true,
+          "evidence": "Line 38: 'reference to config.example.toml'; line 39: 'Config location is `~/.config/tidyfeed/config.toml` (not mentioned in README); also supports TIDYFEED_TOKEN environment variable (not documented)'."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9633,
+        "stddev": 0.0568,
+        "min": 0.89,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 61.9833,
+        "stddev": 5.3742,
+        "min": 55.5,
+        "max": 68.7
+      },
+      "tokens": {
+        "mean": 40663.0,
+        "stddev": 2199.0316,
+        "min": 38265,
+        "max": 43486
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.96",
+      "time_seconds": "+62.0",
+      "tokens": "+40663"
+    }
+  },
+  "notes": [
+    "Regression check, new skill (ef4096b): README and review, 3 runs each. Compare with the with-skill runs in results/2026-10-15/haiku.json.",
+    "README: 96% to 93%, one more failed check out of 27. One README invented an API docs URL and a GitHub issues link, which the new URL rule targets. Review: 100%, unchanged.",
+    "Graded blind by claude-opus-5-5 with the stricter checks from commit b8e308c; those checks don't change any 2026-10-15 with-skill score."
+  ]
+}

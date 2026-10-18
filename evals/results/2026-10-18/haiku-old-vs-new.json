@@ -1,0 +1,797 @@
+{
+  "metadata": {
+    "skill_name": "write-good-docs",
+    "skill_path": "https://github.com/ScriptAutomate/write-good-docs/tree/ef4096b",
+    "executor_model": "claude-haiku-4-5-20251001",
+    "analyzer_model": "claude-opus-5-5",
+    "timestamp": "2026-10-18T20:03:54Z",
+    "evals_run": [
+      2,
+      3
+    ],
+    "runs_per_configuration": 3,
+    "grader_model": "claude-opus-5-5",
+    "baseline_skill_path": "https://github.com/ScriptAutomate/write-good-docs/tree/2911e08"
+  },
+  "runs": [
+    {
+      "eval_id": 2,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.89,
+        "passed": 8,
+        "failed": 1,
+        "total": 9,
+        "time_seconds": 63.1,
+        "tokens": 41912,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a goal-focused how-to for the single task of rotating the token, not a tutorial that teaches by building something or a conceptual explainer",
+          "passed": true,
+          "evidence": "Title 'Rotate your API token', a short prerequisites list, then a single 5-step procedure under '## Rotate your API token'; no tutorial project or conceptual section beyond a one-paragraph overview."
+        },
+        {
+          "text": "The procedure is a numbered (ordered) list, and any step that only applies in some cases starts with its condition (\"If …, then …\")",
+          "passed": true,
+          "evidence": "Steps 1-5 are a numbered list. Conditional content leads with its condition: 'If you use an environment variable, set `TIDYFEED_TOKEN`...', 'If you use a config file, open `~/.config/tidyfeed/config.toml`...', 'If the output says `token OK`... If it says `token rejected (401)`...'."
+        },
+        {
+          "text": "The doc says to create the new token (Settings > API tokens) before revoking the old one",
+          "passed": true,
+          "evidence": "Steps 1-2: 'navigate to **Settings > API tokens**' and 'Click **Create new token**'; step 5: 'After you verify the new token works, revoke the old token'."
+        },
+        {
+          "text": "The doc covers both token locations and that TIDYFEED_TOKEN takes precedence over the config file token",
+          "passed": true,
+          "evidence": "Step 3 covers `TIDYFEED_TOKEN` and the `token` field in `~/.config/tidyfeed/config.toml`, and states 'The environment variable takes precedence if both are set.'"
+        },
+        {
+          "text": "The doc uses tidyfeed check-token to verify the new token before revoking the old one",
+          "passed": true,
+          "evidence": "Step 4: 'Verify that tidyfeed accepts the new token by running: tidyfeed check-token' precedes step 5 revoke."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": false,
+          "evidence": "not in project files: ['https://docs.tidyfeed.example/api', 'https://docs.tidyfeed.example/config']"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "new_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 0.78,
+        "passed": 7,
+        "failed": 2,
+        "total": 9,
+        "time_seconds": 50.6,
+        "tokens": 40870,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a goal-focused how-to for the single task of rotating the token, not a tutorial that teaches by building something or a conceptual explainer",
+          "passed": true,
+          "evidence": "'# Rotate your API token' with sections Create a new token / Update your token / Verify / Revoke the old token. It is one task, with no tutorial or conceptual explainer."
+        },
+        {
+          "text": "The procedure is a numbered (ordered) list, and any step that only applies in some cases starts with its condition (\"If …, then …\")",
+          "passed": false,
+          "evidence": "Every section uses numbered lists, but the conditional part is split into '### Update the config file' / '### Update the environment variable' under 'Use one of the following methods depending on how you configured tidyfeed.' No conditional step starts with 'If …', so the condition is not stated up front in the steps."
+        },
+        {
+          "text": "The doc says to create the new token (Settings > API tokens) before revoking the old one",
+          "passed": true,
+          "evidence": "'## Create a new token': '2. Go to **Settings > API tokens**. 3. Click **Create new token**.' The later section '## Revoke the old token' comes after it, and the doc says 'Both your new token and old token work until you revoke the old one.'"
+        },
+        {
+          "text": "The doc covers both token locations and that TIDYFEED_TOKEN takes precedence over the config file token",
+          "passed": false,
+          "evidence": "Both locations are covered ('~/.config/tidyfeed/config.toml' and 'TIDYFEED_TOKEN'), but nowhere does the doc say TIDYFEED_TOKEN takes precedence over the config file. The closest text is 'Knowledge of where your token is configured (config file, environment variable, or both)', which does not state precedence."
+        },
+        {
+          "text": "The doc uses tidyfeed check-token to verify the new token before revoking the old one",
+          "passed": true,
+          "evidence": "'## Verify the new token works': 'tidyfeed check-token' ... 'If the token is valid, you see the output `token OK`', placed before '## Revoke the old token'."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "new_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 0.89,
+        "passed": 8,
+        "failed": 1,
+        "total": 9,
+        "time_seconds": 52.3,
+        "tokens": 41217,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a goal-focused how-to for the single task of rotating the token, not a tutorial that teaches by building something or a conceptual explainer",
+          "passed": true,
+          "evidence": "Titled '# Rotate your API token' with a single '## Rotate your token' procedure (create, update config, verify, revoke). The intro has one sentence of rationale but no teaching-by-building or conceptual sections."
+        },
+        {
+          "text": "The procedure is a numbered (ordered) list, and any step that only applies in some cases starts with its condition (\"If …, then …\")",
+          "passed": false,
+          "evidence": "The procedure is a numbered list (steps 1-5), but step 3 offers conditional branches as '**Option A: Update the config file**' / '**Option B: Use an environment variable**' under 'Choose one of the following options:'. Neither starts with its condition ('If your token is in the config file, ...'), so the conditional-step requirement is not met."
+        },
+        {
+          "text": "The doc says to create the new token (Settings > API tokens) before revoking the old one",
+          "passed": true,
+          "evidence": "Step 1: 'navigate to **Settings > API tokens**'; step 2: 'Create a new token by clicking **Generate new token**'; the revoke comes last in step 5: 'revoke the old token'."
+        },
+        {
+          "text": "The doc covers both token locations and that TIDYFEED_TOKEN takes precedence over the config file token",
+          "passed": true,
+          "evidence": "Option A: '~/.config/tidyfeed/config.toml'; Option B: 'export TIDYFEED_TOKEN=...' with 'The environment variable takes precedence over the config file if both are set.'"
+        },
+        {
+          "text": "The doc uses tidyfeed check-token to verify the new token before revoking the old one",
+          "passed": true,
+          "evidence": "Step 4: 'Verify that the new token is working by running: tidyfeed check-token', before step 5: 'revoke the old token'."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 55.5,
+        "tokens": 41293,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Breaking changes are called out separately from other changes and include all three: --max-items renamed to --limit, ~/.tidyfeedrc support dropped, Python 3.14 or later required",
+          "passed": true,
+          "evidence": "Dedicated '## Breaking changes' section with subsections '### Python 3.14 required', '### Configuration file location changed' (\"no longer reads configuration from `~/.tidyfeedrc`\"), and '### CLI flag renamed' (\"The `--max-items` flag on the `fetch` command has been renamed to `--limit`\")."
+        },
+        {
+          "text": "Each breaking change tells users what to do to upgrade",
+          "passed": true,
+          "evidence": "Python: \"upgrade before using this release\"; config: \"migrate your settings to the new location before running Tidyfeed 2.0.0\"; flag: \"Update your scripts and commands to use `--limit` instead of `--max-items`.\""
+        },
+        {
+          "text": "New features include markdown export, the check-token command, and the TIDYFEED_TOKEN environment variable",
+          "passed": true,
+          "evidence": "New features section: '### Markdown export format', '### API token verification command' (\"The new `check-token` command...\"), '### Environment variable for API token' (\"set the `TIDYFEED_TOKEN` environment variable\")."
+        },
+        {
+          "text": "Both bug fixes are described in user terms: duplicate items when feeds share a URL, and CSV export failing on items without a published date",
+          "passed": true,
+          "evidence": "\"When two feeds shared the same URL, Tidyfeed would fetch and duplicate items from both feeds. This issue has been fixed\"; \"CSV export previously failed when feed items did not have a published date. This issue has been resolved\"."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] No commit hashes appear",
+          "passed": true,
+          "evidence": "no commit hashes"
+        },
+        {
+          "text": "[script] No internal-only commits (CI, tests, refactors, release chores) are listed",
+          "passed": true,
+          "evidence": "no internal-only commits"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py, apart from the removed --max-items",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "new_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 45.7,
+        "tokens": 39394,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Breaking changes are called out separately from other changes and include all three: --max-items renamed to --limit, ~/.tidyfeedrc support dropped, Python 3.14 or later required",
+          "passed": true,
+          "evidence": "'## Breaking changes' section: \"**Python 3.14 or later required**\", \"**Configuration file location changed** The config file moved from `~/.tidyfeedrc` to `~/.config/tidyfeed/config.toml`\", \"**CLI flag renamed: `--max-items` becomes `--limit`**\"."
+        },
+        {
+          "text": "Each breaking change tells users what to do to upgrade",
+          "passed": true,
+          "evidence": "Python: \"Update your Python installation before upgrading.\"; config: \"Move your existing configuration to the new location using the TOML format when you upgrade.\"; flag: \"Update any scripts or commands that use the old flag name.\""
+        },
+        {
+          "text": "New features include markdown export, the check-token command, and the TIDYFEED_TOKEN environment variable",
+          "passed": true,
+          "evidence": "\"**Export to Markdown format** ... Use `tidyfeed export --format markdown`\"; \"Use the new `tidyfeed check-token` command\"; \"set your API token using the `TIDYFEED_TOKEN` environment variable\"."
+        },
+        {
+          "text": "Both bug fixes are described in user terms: duplicate items when feeds share a URL, and CSV export failing on items without a published date",
+          "passed": true,
+          "evidence": "\"**Feeds with duplicate URLs no longer produce duplicate items** Fixed an issue where adding the same feed URL multiple times would result in duplicate items in your export.\"; \"Resolved a crash that occurred when exporting items without a published date to CSV format.\""
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] No commit hashes appear",
+          "passed": true,
+          "evidence": "no commit hashes"
+        },
+        {
+          "text": "[script] No internal-only commits (CI, tests, refactors, release chores) are listed",
+          "passed": true,
+          "evidence": "no internal-only commits"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py, apart from the removed --max-items",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "new_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 49.5,
+        "tokens": 39545,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Breaking changes are called out separately from other changes and include all three: --max-items renamed to --limit, ~/.tidyfeedrc support dropped, Python 3.14 or later required",
+          "passed": true,
+          "evidence": "'## Breaking changes' section, separate from '## New features'/'## Bug fixes', lists 'Python 3.14 or later required', 'Config file location moved ... from `~/.tidyfeedrc` to `~/.config/tidyfeed/config.toml`', and 'The `--max-items` flag on the `fetch` command has been renamed to `--limit`'."
+        },
+        {
+          "text": "Each breaking change tells users what to do to upgrade",
+          "passed": true,
+          "evidence": "Python: 'you'll need to upgrade your Python environment before installing this release'; config: 'you'll need to move it to the new location'; flag: 'Update any scripts or automation that use this flag' (with --limit named as the new name)."
+        },
+        {
+          "text": "New features include markdown export, the check-token command, and the TIDYFEED_TOKEN environment variable",
+          "passed": true,
+          "evidence": "'Export to Markdown ... Use `tidyfeed export --format markdown`'; 'A new `tidyfeed check-token` command lets you verify that your API token is valid'; 'You can now set your API token using the `TIDYFEED_TOKEN` environment variable'."
+        },
+        {
+          "text": "Both bug fixes are described in user terms: duplicate items when feeds share a URL, and CSV export failing on items without a published date",
+          "passed": true,
+          "evidence": "'When two feeds shared the same URL, tidyfeed would duplicate items in the output. This no longer happens.' and 'CSV export no longer fails when feed items don't have a published date.'"
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] No commit hashes appear",
+          "passed": true,
+          "evidence": "no commit hashes"
+        },
+        {
+          "text": "[script] No internal-only commits (CI, tests, refactors, release chores) are listed",
+          "passed": true,
+          "evidence": "no internal-only commits"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py, apart from the removed --max-items",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.78,
+        "passed": 7,
+        "failed": 2,
+        "total": 9,
+        "time_seconds": 54.8,
+        "tokens": 40831,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a goal-focused how-to for the single task of rotating the token, not a tutorial that teaches by building something or a conceptual explainer",
+          "passed": true,
+          "evidence": "Title '# Rotate your API token'; sections are create -> update -> verify -> revoke; no tutorial build-along or conceptual explanation beyond one intro sentence."
+        },
+        {
+          "text": "The procedure is a numbered (ordered) list, and any step that only applies in some cases starts with its condition (\"If …, then …\")",
+          "passed": false,
+          "evidence": "Steps are numbered lists, but split across sections, and conditional content is not consistently led by its condition. In Method 2 step 3 the doc gives `source ~/.bashrc` unconditionally, then adds the condition afterwards: \"Or, if you use zsh: source ~/.zshrc\". The choice between Method 1/Method 2 is framed as \"Choose one of the following methods\", not as condition-led steps. The strict criterion is not clearly met."
+        },
+        {
+          "text": "The doc says to create the new token (Settings > API tokens) before revoking the old one",
+          "passed": true,
+          "evidence": "'## Create a new token in the web app' step 2: \"Navigate to Settings > API tokens.\" comes first; '## Revoke the old token' is last: \"Once you have confirmed that the new token works, revoke the old token\"."
+        },
+        {
+          "text": "The doc covers both token locations and that TIDYFEED_TOKEN takes precedence over the config file token",
+          "passed": false,
+          "evidence": "Both locations are covered ('Method 1: Update the configuration file' for `~/.config/tidyfeed/config.toml`, 'Method 2: Update the environment variable' for `TIDYFEED_TOKEN`), but precedence is never stated. The doc says \"Choose one of the following methods\", which is wrong if TIDYFEED_TOKEN is set: updating only the config file would leave the old env token active (config.py reads TIDYFEED_TOKEN first)."
+        },
+        {
+          "text": "The doc uses tidyfeed check-token to verify the new token before revoking the old one",
+          "passed": true,
+          "evidence": "'## Verify the new token works': \"tidyfeed check-token\" with outputs `token OK` / `token rejected (401)`, placed before '## Revoke the old token', which begins \"Once you have confirmed that the new token works\"."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 0.78,
+        "passed": 7,
+        "failed": 2,
+        "total": 9,
+        "time_seconds": 54.5,
+        "tokens": 39719,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a goal-focused how-to for the single task of rotating the token, not a tutorial that teaches by building something or a conceptual explainer",
+          "passed": true,
+          "evidence": "Title 'Rotate your API token', prerequisites, a single 5-step '## Rotate your token' procedure; no tutorial or conceptual explainer."
+        },
+        {
+          "text": "The procedure is a numbered (ordered) list, and any step that only applies in some cases starts with its condition (\"If …, then …\")",
+          "passed": false,
+          "evidence": "Steps are numbered, but the case-dependent step 3 does not start with its condition: it says 'Choose one of the following methods:' with '**Option A: Update the config file**' and '**Option B: Use an environment variable**' rather than 'If you store your token in ..., then ...'. Under strict reading this fails."
+        },
+        {
+          "text": "The doc says to create the new token (Settings > API tokens) before revoking the old one",
+          "passed": true,
+          "evidence": "Step 1 'navigate to Settings > API tokens', step 2 'Click **Create new token**', step 5 'revoke your old token'."
+        },
+        {
+          "text": "The doc covers both token locations and that TIDYFEED_TOKEN takes precedence over the config file token",
+          "passed": false,
+          "evidence": "Both locations listed ('The `token` key in `~/.config/tidyfeed/config.toml`' and 'The `TIDYFEED_TOKEN` environment variable'), but the doc never says TIDYFEED_TOKEN takes precedence over the config file; it presents them as interchangeable options."
+        },
+        {
+          "text": "The doc uses tidyfeed check-token to verify the new token before revoking the old one",
+          "passed": true,
+          "evidence": "Step 4 'Verify that tidyfeed accepts the new token ... tidyfeed check-token' precedes step 5 revoke."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "old_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 6,
+        "failed": 3,
+        "total": 9,
+        "time_seconds": 60.5,
+        "tokens": 40986,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a goal-focused how-to for the single task of rotating the token, not a tutorial that teaches by building something or a conceptual explainer",
+          "passed": true,
+          "evidence": "'# Rotate your API token' with Generate / Update / Verify / Revoke sections. It has an '## Overview' paragraph but stays on the single task, with no tutorial or conceptual explainer."
+        },
+        {
+          "text": "The procedure is a numbered (ordered) list, and any step that only applies in some cases starts with its condition (\"If …, then …\")",
+          "passed": false,
+          "evidence": "The steps are numbered, but the conditional branches are '### Option A: Update the environment variable' / '### Option B: Update the configuration file' under 'Choose the method that matches your current setup.' They don't start with 'If …'. The in-step conditionals ('If you use a custom config path, use that instead.', 'If verification fails, ...') come after the action, not before it."
+        },
+        {
+          "text": "The doc says to create the new token (Settings > API tokens) before revoking the old one",
+          "passed": true,
+          "evidence": "'## Generate a new API token' (step 3 'Select **API tokens** from the Settings menu', step 4 'Click the **Create new token** button') comes before '## Revoke the old token'. The doc also says 'the old token remains valid until you explicitly revoke it'."
+        },
+        {
+          "text": "The doc covers both token locations and that TIDYFEED_TOKEN takes precedence over the config file token",
+          "passed": false,
+          "evidence": "Both locations are covered (TIDYFEED_TOKEN and '~/.config/tidyfeed/config.toml'), but there is no statement that TIDYFEED_TOKEN takes precedence. The doc only says 'You can store your token either in an environment variable or in the tidyfeed configuration file.'"
+        },
+        {
+          "text": "The doc uses tidyfeed check-token to verify the new token before revoking the old one",
+          "passed": true,
+          "evidence": "'## Verify the new token works': '1. Run the token verification command: tidyfeed check-token' comes before '## Revoke the old token', which starts 'Once you have confirmed that the new token works'."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": false,
+          "evidence": "not in project files: ['https://app.tidyfeed.example/docs/configuration', 'https://app.tidyfeed.example/docs/troubleshooting']"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.88,
+        "passed": 7,
+        "failed": 1,
+        "total": 8,
+        "time_seconds": 35.9,
+        "tokens": 37989,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Breaking changes are called out separately from other changes and include all three: --max-items renamed to --limit, ~/.tidyfeedrc support dropped, Python 3.14 or later required",
+          "passed": true,
+          "evidence": "A separate '## Breaking changes' section lists '~/.tidyfeedrc' dropped ('no longer supports the legacy `~/.tidyfeedrc`'), '`--max-items` ... renamed to `--limit`', and 'requires Python 3.14 or later'."
+        },
+        {
+          "text": "Each breaking change tells users what to do to upgrade",
+          "passed": true,
+          "evidence": "Each one has an action: 'manually copy your settings to the new location' (~/.config/tidyfeed/config.toml); 'Update your scripts and commands to use the new argument name'; 'Upgrade your Python installation before using this release.'"
+        },
+        {
+          "text": "New features include markdown export, the check-token command, and the TIDYFEED_TOKEN environment variable",
+          "passed": true,
+          "evidence": "'## New features' lists '**Markdown export format**' (`--format markdown`), '**Check token command**' (`check-token`), and '**Environment variable token support**' (`TIDYFEED_TOKEN` overrides the config file token)."
+        },
+        {
+          "text": "Both bug fixes are described in user terms: duplicate items when feeds share a URL, and CSV export failing on items without a published date",
+          "passed": true,
+          "evidence": "'## Bug fixes': 'feeds sharing the same URL would result in duplicate items in your exports' and 'CSV export no longer fails when exporting items that do not have a published date'. Both are written in user-visible terms."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] No commit hashes appear",
+          "passed": true,
+          "evidence": "no commit hashes"
+        },
+        {
+          "text": "[script] No internal-only commits (CI, tests, refactors, release chores) are listed",
+          "passed": false,
+          "evidence": "internal changes listed: ['session setup', 'test matrix']"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py, apart from the removed --max-items",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 44.0,
+        "tokens": 39793,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Breaking changes are called out separately from other changes and include all three: --max-items renamed to --limit, ~/.tidyfeedrc support dropped, Python 3.14 or later required",
+          "passed": true,
+          "evidence": "'## Breaking changes' section separate from features/fixes lists 'Renamed `--max-items` flag to `--limit`', 'tidyfeed no longer reads configuration from `~/.tidyfeedrc`', and 'Requires Python 3.14 or later'."
+        },
+        {
+          "text": "Each breaking change tells users what to do to upgrade",
+          "passed": true,
+          "evidence": "Flag: 'Update your scripts and commands to use `--limit` instead.'; config: 'Use `~/.config/tidyfeed/config.toml` instead.'; Python: 'Please upgrade your Python installation before deploying this release.'"
+        },
+        {
+          "text": "New features include markdown export, the check-token command, and the TIDYFEED_TOKEN environment variable",
+          "passed": true,
+          "evidence": "'Markdown export format ... Use `tidyfeed export --format markdown`'; 'Check token command ... Use `tidyfeed check-token`'; 'The `TIDYFEED_TOKEN` environment variable now takes precedence over the token specified in your config file.'"
+        },
+        {
+          "text": "Both bug fixes are described in user terms: duplicate items when feeds share a URL, and CSV export failing on items without a published date",
+          "passed": true,
+          "evidence": "'tidyfeed no longer duplicates feed items when multiple feeds share the same URL.' and 'CSV export no longer fails when feed items lack a published date. Items without publication dates are now exported correctly with the date field left empty.'"
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] No commit hashes appear",
+          "passed": true,
+          "evidence": "no commit hashes"
+        },
+        {
+          "text": "[script] No internal-only commits (CI, tests, refactors, release chores) are listed",
+          "passed": true,
+          "evidence": "no internal-only commits"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py, apart from the removed --max-items",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "old_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 0.88,
+        "passed": 7,
+        "failed": 1,
+        "total": 8,
+        "time_seconds": 46.4,
+        "tokens": 39566,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Breaking changes are called out separately from other changes and include all three: --max-items renamed to --limit, ~/.tidyfeedrc support dropped, Python 3.14 or later required",
+          "passed": true,
+          "evidence": "'## Breaking Changes' section lists \"**Python 3.14 now required**\", \"**Configuration file location changed**: tidyfeed no longer reads from `~/.tidyfeedrc`\", and \"**`--max-items` option renamed**: ... renamed to `--limit`\"."
+        },
+        {
+          "text": "Each breaking change tells users what to do to upgrade",
+          "passed": true,
+          "evidence": "Python: \"update your Python installation before upgrading tidyfeed\"; config: \"move it to the new location and update the file format to use TOML syntax\"; flag: \"Update any scripts or automation that use the `fetch` command to use the new option name.\""
+        },
+        {
+          "text": "New features include markdown export, the check-token command, and the TIDYFEED_TOKEN environment variable",
+          "passed": true,
+          "evidence": "New Features: \"**Markdown export format**\", \"**Token verification command**: Use the new `check-token` command\", \"**Environment variable configuration**: ... set the `TIDYFEED_TOKEN` environment variable\"."
+        },
+        {
+          "text": "Both bug fixes are described in user terms: duplicate items when feeds share a URL, and CSV export failing on items without a published date",
+          "passed": true,
+          "evidence": "\"Items are no longer duplicated when multiple feeds share the same feed URL\"; \"CSV export no longer fails when feed items are missing a published date.\""
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] No commit hashes appear",
+          "passed": true,
+          "evidence": "no commit hashes"
+        },
+        {
+          "text": "[script] No internal-only commits (CI, tests, refactors, release chores) are listed",
+          "passed": false,
+          "evidence": "internal changes listed: ['session setup', 'test matrix']"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py, apart from the removed --max-items",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "new_skill": {
+      "pass_rate": {
+        "mean": 0.9267,
+        "stddev": 0.0898,
+        "min": 0.78,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 52.7833,
+        "stddev": 5.9961,
+        "min": 45.7,
+        "max": 63.1
+      },
+      "tokens": {
+        "mean": 40705.1667,
+        "stddev": 1015.508,
+        "min": 39394,
+        "max": 41912
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 0.8317,
+        "stddev": 0.1136,
+        "min": 0.67,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 49.35,
+        "stddev": 8.9306,
+        "min": 35.9,
+        "max": 60.5
+      },
+      "tokens": {
+        "mean": 39814.0,
+        "stddev": 1077.9117,
+        "min": 37989,
+        "max": 40986
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.09",
+      "time_seconds": "+3.4",
+      "tokens": "+891"
+    }
+  },
+  "notes": [
+    "Haiku 4.5 on the how-to and release-notes tasks: old skill (2911e08) against new skill (ef4096b), 3 runs each, both in the same round so timing and grading conditions match.",
+    "How-to: 74% to 85%. Saying that TIDYFEED_TOKEN wins over the config file went from 0 of 3 runs to 2 of 3. Condition-first steps went from 0 of 3 to 1 of 3, so Haiku still writes 'Option A/B' in 2 of 3 runs. Invented doc URLs: 1 of 3 runs either way.",
+    "Release notes: 92% to 100%. Internal CI, test and refactor commits listed: 2 of 3 runs with the old skill, 0 of 3 with the new.",
+    "Graded blind by claude-opus-5-5 with the stricter checks from commit b8e308c; those checks don't change any 2026-10-15 with-skill score."
+  ]
+}

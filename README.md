@@ -28,6 +28,10 @@ Unlike filling in a template by hand, the skill also covers reviews. Ask
 "is this README missing anything?" and an agent compares your doc against the
 guide for its type. It ranks the gaps by how much they affect the reader.
 
+In blind tests, the skill raised doc quality by 9 to 15 points for Claude
+Haiku, Sonnet and Opus. Haiku with the skill scored higher than Opus without
+it. See [`evals/RESULTS.md`](evals/RESULTS.md) for how this was measured.
+
 This README was itself written with the skill.
 
 ## Who this project is for
@@ -61,6 +65,7 @@ For every type and what each one is for, see the tables in
 | `references/writing-tips.md` | TGDP's general writing guidelines, which apply to every type. |
 | `references/UPSTREAM.md` | The TGDP release tag and commit the references come from. |
 | `scripts/check-leftovers.sh` | Finds template placeholders and boilerplate left behind in a finished draft. |
+| `evals/` | A benchmark that measures whether the skill improves docs, and its [results](evals/RESULTS.md). |
 | `maintainer/` | Tools for maintainers only. See [`CONTRIBUTING.md`](CONTRIBUTING.md). |
 
 ## Prerequisites

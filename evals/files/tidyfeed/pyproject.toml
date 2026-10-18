@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tidyfeed"
+version = "2.0.0"
+description = "Fetch RSS and Atom feeds from the Tidyfeed API and export them as clean JSON, CSV, or Markdown."
+requires-python = ">=3.14"
+license = { file = "LICENSE" }
+dependencies = ["requests>=2.31"]
+
+[project.scripts]
+tidyfeed = "tidyfeed.cli:main"

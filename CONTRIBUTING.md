@@ -34,6 +34,7 @@ description.
 | `references/` | TGDP | `maintainer/sync-references.py` |
 | `scripts/` | This project. These scripts are for skill users. | Hand |
 | `maintainer/` | This project. These scripts are for maintainers only. | Hand |
+| `evals/` | This project. A benchmark for maintainers; the skill never loads it. | Hand |
 | `README.md`, `CONTRIBUTING.md` | This project | Hand |
 
 Everything in `SKILL.md` is loaded into the agent's context each time the
@@ -63,6 +64,42 @@ templates.
 
 3. Start a new agent session and try the skill on a real request, such
    as `/write-good-docs how-to <task>` in Claude Code.
+4. If you changed `SKILL.md`, re-run the benchmark. See
+   [Measure the skill](#measure-the-skill).
+
+## Measure the skill
+
+The `evals/` folder holds a benchmark. It checks whether the skill makes
+an agent write better docs than the same agent without the skill. It
+contains:
+
+- `evals/evals.json`: four realistic requests, each with the checks a
+  good answer must pass. Each one tests something the skill measurably
+  improves: build a README from project facts, write a how-to as a real
+  numbered procedure, curate release notes from a commit log, and review
+  a weak README by ranking its gaps.
+- `evals/files/tidyfeed/`: a small, made-up command-line tool. The
+  requests are about this tool, so a doc that invents a flag, an
+  environment variable or a URL can be caught.
+- `evals/check_outputs.py`: runs the checks marked `[script]` in
+  `evals.json` against one run's output. A grader agent judges the
+  rest.
+
+To run the benchmark, use Anthropic's
+[skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator)
+in Claude Code:
+
+1. Install skill-creator, as described in
+   [Run evals with skill-creator](https://code.claude.com/docs/en/skills#run-evals-with-skill-creator).
+2. Ask Claude to use skill-creator to evaluate this skill with the evals
+   in `evals/evals.json`. It runs each request with and without the
+   skill, grades the results and produces a report with pass rates,
+   time and tokens for each.
+3. Keep the results outside this repository. skill-creator's
+   `<skill-name>-workspace/` folder is for local use only.
+
+A change to `SKILL.md` shouldn't lower the with-skill pass rate. Mention
+the before and after pass rates in your pull request.
 
 ## Refresh the templates
 

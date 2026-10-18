@@ -1,0 +1,17 @@
+git log --oneline v1.4.0..v2.0.0
+
+e91c2a7 chore(release): 2.0.0
+4b7f0d3 docs: explain token lookup order in config module
+a03e5c1 feat(cli)!: rename --max-items to --limit on fetch
+77d1e2b feat(export): add markdown export format
+c5a9f40 fix(fetch): stop duplicating items when two feeds share a URL
+0f3e8aa ci: add Python 3.14 to the test matrix
+9d24b61 feat(config)!: drop support for ~/.tidyfeedrc; use ~/.config/tidyfeed/config.toml
+31be7c2 refactor(client): move HTTP session setup into Client.__init__
+e8a6f17 feat(cli): add check-token command to verify the API token
+b2c4d90 chore(deps): bump requests from 2.28 to 2.31
+6f1a0c3 fix(export): CSV export no longer fails on items without a published date
+1d93e7f build!: require Python 3.14 or later
+85e0b2a test: cover --since parsing edge cases
+c40f9de feat(config): TIDYFEED_TOKEN environment variable overrides the config file token
+2aa71b8 ci: cache pip downloads

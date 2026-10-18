@@ -1,0 +1,6 @@
+# Copy to ~/.config/tidyfeed/config.toml
+token = "tf_live_replace_me"
+feeds = [
+  "https://blog.example.org/feed.xml",
+  "https://news.example.com/atom",
+]

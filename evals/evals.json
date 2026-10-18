@@ -1,0 +1,81 @@
+{
+  "skill_name": "write-good-docs",
+  "evals": [
+    {
+      "id": 1,
+      "name": "readme-from-project",
+      "prompt": "Write a README.md for the tidyfeed project in evals/files/tidyfeed/. It's going on GitHub soon and people need to know what it is and how to get going with it.",
+      "expected_output": "A README built from the project's real facts: what tidyfeed does and why to use it before any tech stack, who it's for, install and token setup that match pyproject.toml and config.py, only real commands and flags, Apache-2.0 license, and no template scaffolding.",
+      "files": [
+        "evals/files/tidyfeed/"
+      ],
+      "expectations": [
+        "The README describes what tidyfeed does and why someone would use it before it mentions Python, requests, or other implementation technologies",
+        "The README states who the project is for (its intended users)",
+        "The README gives install steps that use pip and states the Python 3.14 or later requirement",
+        "The README explains how to provide the API token: the TIDYFEED_TOKEN environment variable or the token key in ~/.config/tidyfeed/config.toml",
+        "The README states the license as Apache-2.0",
+        "[script] No TGDP template placeholders or boilerplate remain",
+        "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+        "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+        "[script] No invented TIDYFEED_* environment variables"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "howto-rotate-token",
+      "prompt": "Users of tidyfeed (project is in evals/files/tidyfeed/) keep asking us how to rotate the API token it uses. Write them a doc for that.",
+      "expected_output": "A how-to (not a tutorial or concept page): one goal, numbered steps that start with verbs, create the new token before revoking the old one, update whichever token location is in use, verify with check-token, then revoke the old token.",
+      "files": [
+        "evals/files/tidyfeed/"
+      ],
+      "expectations": [
+        "The doc is a goal-focused how-to for the single task of rotating the token, not a tutorial that teaches by building something or a conceptual explainer",
+        "The procedure is a numbered (ordered) list, and any step that only applies in some cases starts with its condition (\"If …, then …\")",
+        "The doc says to create the new token (Settings > API tokens) before revoking the old one",
+        "The doc covers both token locations and that TIDYFEED_TOKEN takes precedence over the config file token",
+        "The doc uses tidyfeed check-token to verify the new token before revoking the old one",
+        "[script] No TGDP template placeholders or boilerplate remain",
+        "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+        "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+        "[script] No invented TIDYFEED_* environment variables"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "release-notes-from-log",
+      "prompt": "We just tagged tidyfeed 2.0.0. Write the release notes for it from evals/files/tidyfeed/git-log-2.0.txt (the rest of the project is in that folder too if you need it).",
+      "expected_output": "User-facing release notes: breaking changes called out with what users must do, new features and fixes described in user terms, internal-only commits (CI, tests, refactors, release chores) left out, no commit hashes.",
+      "files": [
+        "evals/files/tidyfeed/"
+      ],
+      "expectations": [
+        "Breaking changes are called out separately from other changes and include all three: --max-items renamed to --limit, ~/.tidyfeedrc support dropped, Python 3.14 or later required",
+        "Each breaking change tells users what to do to upgrade",
+        "New features include markdown export, the check-token command, and the TIDYFEED_TOKEN environment variable",
+        "Both bug fixes are described in user terms: duplicate items when feeds share a URL, and CSV export failing on items without a published date",
+        "[script] No TGDP template placeholders or boilerplate remain",
+        "[script] No commit hashes appear",
+        "[script] No internal-only commits (CI, tests, refactors, release chores) are listed",
+        "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py, apart from the removed --max-items"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "review-readme-draft",
+      "prompt": "Is this README missing anything? evals/files/tidyfeed/README-draft.md — the project it's for is in the same folder.",
+      "expected_output": "A review, not a silent rewrite: identifies the doc as a README, reports the gaps ranked by reader impact, grounded in the project's real facts.",
+      "files": [
+        "evals/files/tidyfeed/"
+      ],
+      "expectations": [
+        "The response presents its findings before, or instead of, a full rewritten README",
+        "The findings are ranked or prioritised by impact on the reader",
+        "It flags that the description leads with technologies instead of what tidyfeed does and why to use it",
+        "It flags the missing statement of who the project is for",
+        "It flags missing installation steps or prerequisites (Python 3.14+, installing with pip)",
+        "It flags that the config section lacks specifics, such as TIDYFEED_TOKEN, the config file path, or config.example.toml"
+      ]
+    }
+  ]
+}

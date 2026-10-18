@@ -131,13 +131,36 @@ Each type dir holds `<role>_<type>.<ext>`. Not every type has all five.
    reread the draft yourself.
 6. **Don't paste guide prose into the doc.** The guides are advice to
    the writer, not content for the reader.
-7. **Apply `writing-tips.md`** as a final pass: consistent tone, spelled
-   out acronyms on first use, single-sentence steps, chunked procedures,
+7. **Apply `writing-tips.md`**: consistent tone, spelled out acronyms on
+   first use, single-sentence steps, chunked procedures, and the
    `Optional:` and `If …, then …` conventions.
-8. **For reviews, compare against the guide.** When asked "is this doc
+8. **Check before you deliver.** Reread the draft against this list and
+   fix anything that fails:
+   - Every URL, command, flag, and environment variable appears in the
+     project's files, or is marked TODO. Don't link to docs pages,
+     package indexes, or repos you haven't seen; a broken link costs the
+     reader more than a TODO does.
+   - A procedure is one numbered list. A step that applies only in some
+     cases starts with its condition ("If you use X, then …") so readers
+     can skip it. Don't split alternatives into separate headings or
+     "Option A/B" blocks; readers lose their place in the sequence.
+   - Where two settings interact (one overrides another, one must run
+     first), say which wins. That's the fact readers get wrong.
+   - The type-specific rules below hold.
+9. **For reviews, compare against the guide.** When asked "is this doc
    good / missing anything", identify its type, then report which guide
    sections are missing, misplaced, or doing another type's job —
    ranked by reader impact — before rewriting anything.
-9. **Use `process_` for lifecycle questions** (who owns the doc, when to
-   update it, how to research it). `resources_` is further reading only;
-   cite from it when the user wants sources.
+10. **Use `process_` for lifecycle questions** (who owns the doc, when to
+    update it, how to research it). `resources_` is further reading only;
+    cite from it when the user wants sources.
+
+## Type-specific rules
+
+- **release-notes:** include only changes a user would notice. Leave out
+  CI, tests, refactors, internal docs, and release chores, even if the
+  commit log lists them; they belong in a changelog. Describe each fix
+  by the symptom users saw, not the code change.
+- **how-to:** one task, one numbered procedure, conditions first (see
+  step 8). If the task has setup the reader may already have done, make
+  it a prerequisite, not a step.

@@ -30,9 +30,14 @@ OTHER_TOOL = re.compile(r"^\s*(?:\$\s*)?(?:pip|pipx|python3?|git|cp|cd|mkdir|exp
 # A URL naming tidyfeed (its repo, package page, docs or API host) is a project
 # fact that must come from the fixture. Links to dependencies' docs are fine.
 FACT_URL = re.compile(r"tidyfeed", re.I)
+# A placeholder repo URL (github.com/<org>/..., OWNER/...) is unfinished unless marked TODO.
+PLACEHOLDER_URL = re.compile(r"<[^>]*>|\bOWNER\b|your[-_]?(?:org|user|name)", re.I)
 # Phrases that only appear if an internal-only commit was copied through.
 INTERNAL_PHRASES = ["cache pip", "pip download", "Client.__init__",
-                    "session setup", "--since parsing", "chore(release)"]
+                    "session setup", "--since parsing", "chore(release)",
+                    "test coverage", "test matrix", "test-matrix", "internal refactor"]
+# --config belongs to the top-level parser; after a subcommand argparse rejects it.
+SUBCOMMAND_THEN_CONFIG = re.compile(r"\btidyfeed[ \t]+(?:fetch|export|check-token)\b[^\n`]*?[ \t]--config\b")
 
 
 def fixture_text():
@@ -88,19 +93,29 @@ def check_cli(doc):
     used_cmds = {m.group(1) for l in code_lines
                  if (m := re.match(r"\s*(?:\$\s*)?tidyfeed[ \t]+([a-z][a-z-]*)", l))}
     bad_cmds = sorted(used_cmds - commands)
-    ok = not bad_flags and not bad_cmds
-    evidence = ("all flags and subcommands exist in cli.py" if ok else
-                f"not in cli.py: flags {bad_flags}, subcommands {bad_cmds}")
+    misplaced = sorted({m.group(0).strip() for m in SUBCOMMAND_THEN_CONFIG.finditer(code_text(doc))})
+    ok = not bad_flags and not bad_cmds and not misplaced
+    if ok:
+        evidence = "all flags and subcommands exist in cli.py"
+    else:
+        evidence = f"not in cli.py: flags {bad_flags}, subcommands {bad_cmds}"
+        if misplaced:
+            evidence += f"; --config after a subcommand fails (top-level option): {misplaced}"
     return ok, evidence
 
 
 def check_urls(doc):
     known = fixture_text()
     bad = []
-    for line in doc.splitlines():
-        for url in re.findall(r"https?://[^\s)>\]`'\"]+", line):
-            url = url.rstrip(".,;:")
-            if FACT_URL.search(url) and url not in known and "TODO" not in line.upper():
+    lines = doc.splitlines()
+    for i, line in enumerate(lines):
+        # A TODO on this line or just above it marks the URL as a known gap.
+        marked = "TODO" in "\n".join(lines[max(0, i - 2):i + 1]).upper()
+        for url in re.findall(r"https?://[^\s)\]`'\"]+", line):
+            url = url.rstrip(".,;:>")
+            if url in known or marked:
+                continue
+            if FACT_URL.search(url) or PLACEHOLDER_URL.search(url):
                 bad.append(url)
     return not bad, "no invented project URLs" if not bad else f"not in project files: {sorted(set(bad))}"
 
@@ -130,8 +145,10 @@ def main():
     if spec is None:
         sys.exit(f"unknown eval: {name}")
     docs = sorted(p for p in outputs.rglob("*") if p.suffix in (".md", ".yml", ".yaml"))
-    # Judge what a reader sees: HTML comments (notes to maintainers) don't render.
-    doc = re.sub(r"<!--.*?-->", "", "\n".join(p.read_text() for p in docs), flags=re.S)
+    # Judge what a reader sees: HTML comments (notes to maintainers) don't render,
+    # but a TODO inside one still marks the nearby text as a known gap.
+    doc = re.sub(r"<!--.*?-->", lambda m: "TODO" if "TODO" in m.group(0).upper() else "",
+                 "\n".join(p.read_text() for p in docs), flags=re.S)
 
     results = []
     for text in (t for t in spec["expectations"] if t.startswith("[script]")):

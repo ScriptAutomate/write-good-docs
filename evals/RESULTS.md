@@ -5,6 +5,59 @@ the measured answer for each model tested. Each section is a dated
 snapshot, newest first: re-run the benchmark whenever `SKILL.md` changes
 and add a new dated results folder.
 
+## 2026-10-19: tutorial and doc-type tasks, and the split rule
+
+This round added two tasks to [`evals.json`](evals.json): task 5 writes a
+tutorial for first-time users, and task 6 asks for one doc that serves
+two reader goals. A third candidate, a GitHub bug report form, showed
+little difference with the skill and was dropped. Grading was blind, by
+Opus 5.5, as before.
+
+**Tutorial (task 5): the skill helps both models**
+
+| Model | With skill | Without skill | Gain |
+|---|---|---|---|
+| Haiku 4.5 | 100% | 80% | +20 points |
+| Sonnet 5 | 100% | 87% | +13 points |
+
+Without the skill, tutorials often failed to say up front who they're
+for and what the reader will learn (all 3 Haiku runs, 2 of 3 Sonnet
+runs). Some also didn't end with a summary.
+
+**Choosing a doc type (task 6): the skill needed a clearer rule**
+
+With the skill at commit
+[`ef4096b`](https://github.com/ScriptAutomate/write-good-docs/commit/ef4096b),
+Haiku scored no better than without it (50% against 61%). It usually
+recommended one combined doc with a section for each goal. Commit
+[`87a01f6`](https://github.com/ScriptAutomate/write-good-docs/commit/87a01f6)
+made the rule explicit: recommend separate docs, even when the user asked
+for one.
+
+| Model | Before the rule | With the rule |
+|---|---|---|
+| Haiku 4.5 | 61% (1 of 3 runs recommended two docs) | 100% (3 of 3) |
+| Sonnet 5 | not run | 100% (3 of 3) |
+
+**Regression check for the split rule (Haiku 4.5)**
+
+| Task | Before (2026-10-18) | With the rule |
+|---|---|---|
+| README | 93% | 93% |
+| README review | 100% | 94% |
+
+The review dip is one failed check out of 18: one run didn't note that
+the draft leads with its tech stack. No run proposed splitting the
+README, so the rule doesn't seem to be the cause. Both README failures
+are invented URLs, as on 2026-10-18.
+
+Graders also noted problems that no check covers yet: `--config` documented
+as a subcommand option (it must come before the subcommand), invented
+claims about the web app, and `pip install tidyfeed` for a package that
+isn't published.
+
+Raw results are in [`results/2026-10-19/`](results/2026-10-19/).
+
 ## 2026-10-18: explicit rules for procedures, URLs and release notes
 
 The 2026-10-15 benchmark (below) showed no gain for Haiku on how-tos or

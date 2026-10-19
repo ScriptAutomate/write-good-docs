@@ -1,0 +1,476 @@
+{
+  "metadata": {
+    "skill_name": "write-good-docs",
+    "skill_path": "https://github.com/ScriptAutomate/write-good-docs/tree/ef4096b",
+    "executor_model": "claude-sonnet-5",
+    "analyzer_model": "claude-opus-5-5",
+    "timestamp": "2026-10-19T15:22:50Z",
+    "evals_run": [
+      5
+    ],
+    "runs_per_configuration": 3,
+    "grader_model": "claude-opus-5-5"
+  },
+  "runs": [
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 181.1,
+        "tokens": 70504,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Title 'Build a Markdown reading list with tidyfeed'. Steps run from install through config, check-token, fetch and export to 'reading-list.md', and an example of the resulting file is shown at lines 143-146."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": true,
+          "evidence": "Overview: 'This tutorial is intended for people who have never used tidyfeed before' and 'By the end of this tutorial, you'll be able to: ... Export those items as a Markdown reading list'."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "'Before you start' lists '* Python 3.14 or later' and '* A Tidyfeed account, so you can create an API token'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Token and feeds are written to config.toml in 'Configure tidyfeed' step 2. check-token is step 3, then 'tidyfeed fetch', then 'tidyfeed export --format markdown -o reading-list.md'."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "'tidyfeed prints its version, for example `tidyfeed 2.0.0`', 'tidyfeed prints \"token OK\" if the token was accepted', and 'for example \"fetched 24 items\"'."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "The '## Summary' section ('In this tutorial, you learned how to: ...') is followed by '## Next steps' (other formats, --since, check-token)."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 150.1,
+        "tokens": 69397,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Title 'Build a Markdown reading list'. Numbered steps 1-8 run install, token, config, check-token, fetch and export to reading-list.md, and show a sample of the file."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": true,
+          "evidence": "'This tutorial is intended for people who have never used tidyfeed before.' and 'By the end of this tutorial, you'll be able to: ... Fetch new posts and export them as a Markdown reading list'."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "'* Python 3.14 or later installed' and '* A Tidyfeed account, so you can create an API token'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 4 puts the token and feeds in config.toml, step 5 runs 'tidyfeed check-token', step 6 'tidyfeed fetch', step 7 'tidyfeed export --format markdown -o reading-list.md'."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "Step 2: 'for example `tidyfeed 2.0.0`'. Step 5: 'This prints `token OK` if the Tidyfeed API accepts your token'. Step 6: 'for example `fetched 14 items`'."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "The '## Summary' section ('In this tutorial, you learned how to: ...') is followed by '## Next steps' (--since, more feeds, csv/json)."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 239.2,
+        "tokens": 72985,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Title 'Build your first reading list with tidyfeed'. Steps 1-5 build reading-list.md from configured blog feeds ('Open `reading-list.md` to see your reading list')."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": true,
+          "evidence": "'This tutorial is for anyone who has never used tidyfeed before.' and 'By the end of this tutorial, you'll be able to: ... Export fetched items as a Markdown reading list'."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "'* Python 3.14 or later installed.' and '* A Tidyfeed account with an API token. If you don't have a token yet, ... create one under **Settings > API tokens**'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 1 writes token and feeds to config.toml, step 2 runs 'tidyfeed check-token', step 3 'tidyfeed fetch', step 4 'tidyfeed export --format markdown -o reading-list.md'."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "Step 2: 'tidyfeed prints `token OK` and exits successfully.' Step 3: 'for example `fetched 34 items`'. Step 5: 'You should see a bulleted list of links from both of your blogs.'"
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "The '## Summary' section ('In this tutorial, you learned how to: ...') is followed by '## Next steps' (other formats, more feeds, --since, cron)."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 75.7,
+        "tokens": 49741,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Steps 1-7 go 'from a blank install to a finished `reading-list.md` file built from a couple of blogs you follow'. Step 7 shows sample output."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": true,
+          "evidence": "What: 'By the end you'll have fetched items from two RSS/Atom feeds and exported them as a Markdown list of links.' Who: 'No prior tidyfeed experience is assumed.', which names newcomers as the audience."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "'- Python 3.14 or later' and '- An account on the Tidyfeed web app (to create an API token)'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 4 writes the token and feeds to config.toml (or sets TIDYFEED_TOKEN), Step 5 runs 'tidyfeed check-token', Step 6 'tidyfeed fetch', Step 7 'tidyfeed export --format markdown -o reading-list.md'."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "'You should see `tidyfeed 2.0.0`.' (Step 1), 'You should see `token OK`.' (Step 5), and 'You'll see a line like: fetched 42 items' (Step 6)."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "Step 7 closes with 'That's it — you now have a Markdown reading list built from the blogs you follow.', directly followed by '## Next steps' (keep it fresh, more blogs, other formats, --config). The summary is a single line but states what was built, and it ends the instructional content."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 8,
+        "failed": 2,
+        "total": 10,
+        "time_seconds": 81.8,
+        "tokens": 48827,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Steps 1-6 build `reading-list.md` from two blog feeds: 'end up with a `reading-list.md` file you can open, read'. Step 6 shows sample output."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": false,
+          "evidence": "The opening says what the reader will do ('you'll install tidyfeed, connect it to two blogs you follow, and end up with a `reading-list.md` file'), but nothing says who the tutorial is for. No audience statement such as 'for people new to tidyfeed' appears."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "'- Python 3.14 or later (`python3 --version` to check)' and '- A Tidyfeed account and an API token (step 2 below shows how to get one)'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 3 writes the token and feeds to config.toml, Step 4 runs 'tidyfeed check-token', Step 5 'tidyfeed fetch', Step 6 'tidyfeed export --format markdown -o reading-list.md'."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "The expected output blocks are 'tidyfeed 2.0.0' (Step 1), 'token OK' (Step 4) and 'fetched 14 items' (Step 5)."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": false,
+          "evidence": "The doc does not end with a summary. A one-line wrap-up ('That's it — you've gone from two blog URLs to a readable Markdown list in six commands.') sits mid-document at the end of Step 6. It is followed by a further instructional section, 'Keeping the list fresh', and the doc ends with '## Next steps' only. Next steps are present, but there is no closing summary of what was learned."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 8,
+        "failed": 2,
+        "total": 10,
+        "time_seconds": 102.6,
+        "tokens": 52193,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "The opening says 'build a Markdown reading list from two blogs — ending up with a `reading-list.md` file'. Steps 1-7 build it, and Step 6 shows sample output."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": false,
+          "evidence": "What the reader will do is stated ('you'll install tidyfeed, connect it to your Tidyfeed account, and build a Markdown reading list'), but not who the tutorial is for. There is no audience statement. The only other framing is 'It should take about 10 minutes.'"
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "'- Python 3.14 or later, with `pip`' and '- A Tidyfeed account (sign up at the Tidyfeed web app if you don't have one yet)'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 3 writes the token and feeds to config.toml, Step 4 runs 'tidyfeed check-token', Step 5 'tidyfeed fetch', Step 6 'tidyfeed export --format markdown -o reading-list.md'."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "'You should see something like `tidyfeed 2.0.0`' (Step 1), 'You should see: token OK' (Step 4), and 'reports how many items it found: fetched 24 items' (Step 5)."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": false,
+          "evidence": "The doc does not end with a summary. Step 7 contains a wrap-up ('You now have a single file with clickable links to everything new from both blogs — your first tidyfeed reading list.'). It is followed by a further instructional section, 'Keeping your reading list up to date', and the doc ends with '## Next steps' only. There is no closing summary of what was learned."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 190.1333,
+        "stddev": 45.2317,
+        "min": 150.1,
+        "max": 239.2
+      },
+      "tokens": {
+        "mean": 70962.0,
+        "stddev": 1837.3239,
+        "min": 69397,
+        "max": 72985
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8667,
+        "stddev": 0.1155,
+        "min": 0.8,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 86.7,
+        "stddev": 14.1035,
+        "min": 75.7,
+        "max": 102.6
+      },
+      "tokens": {
+        "mean": 50253.6667,
+        "stddev": 1740.5773,
+        "min": 48827,
+        "max": 52193
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.13",
+      "time_seconds": "+103.4",
+      "tokens": "+20708"
+    }
+  },
+  "notes": [
+    "The tutorial task on Sonnet 5, with the skill at ef4096b and without it, 3 runs each.",
+    "100% with the skill, 87% without. Without the skill, 2 of 3 runs failed the checks for saying who the tutorial is for and for ending with a summary.",
+    "Graded blind by claude-opus-5-5."
+  ]
+}

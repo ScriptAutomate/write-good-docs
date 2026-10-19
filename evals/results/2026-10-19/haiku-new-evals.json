@@ -1,0 +1,766 @@
+{
+  "metadata": {
+    "skill_name": "write-good-docs",
+    "skill_path": "https://github.com/ScriptAutomate/write-good-docs/tree/ef4096b",
+    "executor_model": "claude-haiku-4-5-20251001",
+    "analyzer_model": "claude-opus-5-5",
+    "timestamp": "2026-10-19T15:22:50Z",
+    "evals_run": [
+      5,
+      6
+    ],
+    "runs_per_configuration": 3,
+    "grader_model": "claude-opus-5-5"
+  },
+  "runs": [
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 74.4,
+        "tokens": 41500,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Title 'Build Your First Reading List with tidyfeed'; 8 numbered steps that end in 'tidyfeed export --format markdown --output reading-list.md' producing reading-list.md, with a sample of the Markdown list. Teaches by building one result, not a reference."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": true,
+          "evidence": "Overview: 'In this tutorial, you'll learn how to create a curated reading list from your favorite blogs...This tutorial is intended for anyone new to tidyfeed' plus a 'By the end of this tutorial, you'll be able to' list."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "'Before you start': 'Have Python 3.14 or later installed' and 'Have access to the Tidyfeed web app at https://app.tidyfeed.example (create a free account...)'; step 3 creates the API token."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 5 writes token and feeds into ~/.config/tidyfeed/config.toml; step 6 runs 'tidyfeed check-token'; step 7 'tidyfeed fetch'; step 8 'tidyfeed export --format markdown --output reading-list.md'. Order matches cli.py/client.py dependencies (export reads the fetch cache)."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "Step 6: 'If your token is valid, you'll see `token OK`'; step 7: 'You'll see output like `fetched 87 items`'; step 2: 'You should see output like `tidyfeed 2.0.0`'. Matches cli.py print strings."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "'## Summary' ('In this tutorial, you learned how to: ...' and 'You've successfully built your first reading list') followed by '## Next steps' (add feeds, CSV export, cron, --help)."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 59.3,
+        "tokens": 40460,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Title 'Build Your First Reading List with tidyfeed'; Steps 1-5 culminate in 'tidyfeed export --format markdown --output reading-list.md' with a sample of the resulting list. The optional Step 6 adds other formats but the doc stays a tutorial."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": true,
+          "evidence": "Overview: 'In this tutorial, you'll learn how to create a Markdown reading list from RSS and Atom blog feeds you follow. This tutorial is intended for people who are new to tidyfeed', plus a 'By the end of this tutorial, you'll be able to' list."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "'Before you start': 'Python 3.14 or later installed on your machine' and 'Access to the Tidyfeed service and an API token (tokens are created in the Tidyfeed web app under Settings > API tokens)'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 2 writes token and feeds to ~/.config/tidyfeed/config.toml; Step 3 'tidyfeed check-token'; Step 4 'tidyfeed fetch'; Step 5 'tidyfeed export --format markdown --output reading-list.md' ('Now that you have articles cached')."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "Step 1: 'You should see output like `tidyfeed 2.0.0`'; Step 3: 'you'll see `token OK`'; Step 4: 'You'll see output like `fetched 85 items`'; Step 5 shows sample Markdown output."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "'## Summary' ('In this tutorial, you learned how to: ...') followed by '## Next steps' (add blogs, schedule fetches, JSON integrations) ends the doc."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 86.8,
+        "tokens": 44208,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Title 'Create Your First Reading List with tidyfeed'. The steps go from token to install to config.toml with two feeds, then 'tidyfeed fetch', then 'tidyfeed export --format markdown --output reading-list.md' ('This creates a file named `reading-list.md`... Open it... to view your reading list'). It builds one concrete result and is not a reference page."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": true,
+          "evidence": "Line 3: 'you'll learn how to gather articles from your favorite blogs and export them as a Markdown reading list'. Line 5: 'This tutorial is intended for anyone new to tidyfeed'. Lines 11-15: 'By the end of this tutorial, you'll be able to:' followed by three outcomes."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "The 'Before you start' list includes '* A Tidyfeed account with an API token (you'll create one during this tutorial)' and '* Python 3.14 or later installed on your machine'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Token and feeds are written to config.toml in step 4 of 'Create your configuration file', and `tidyfeed check-token` follows in step 6. The 'Fetch articles' section follows the config, and the 'Export your articles as Markdown' section ('tidyfeed export --format markdown') comes after fetch."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "check-token: 'If your token is valid, you'll see the message `token OK`'. fetch: 'you'll see a message showing how many items were fetched, such as `fetched 95 items`'. tidyfeed --version: 'prints a version number'."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "'## Summary' ('In this tutorial, you learned how to:' followed by five bullets, ending in 'Export your articles as a Markdown reading list') and '## Next steps' (cron scheduling, `--config` for multiple lists, sharing, `--since` digests)."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 81.9,
+        "tokens": 47522,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": true,
+          "evidence": "'You want ONE document that: 1. Gets brand-new users to their first export in under 2 minutes 2. Documents every command and option in full. These are competing goals that typically require different content types.'"
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": false,
+          "evidence": "Recommends one doc: '## Recommendation: Write a Quickstart...you can add a \"Commands and options\" reference section within the same document.' Quickstart and reference are both named, but separate docs are not recommended."
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": false,
+          "evidence": "Argues the opposite: 'One coherent document: Readers first learn the happy path (fast), then can dive into detailed options' and 'Why This Works...One coherent document, one reader journey'. It never explains why a single doc would serve both readers poorly."
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": false,
+          "evidence": "The recommendation is a single Quickstart with an embedded reference section: 'You can add a comprehensive reference section and still call it a Quickstart'. This is the single-file approach given as the recommendation."
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Plan uses real commands and flags: '`tidyfeed fetch`', '`tidyfeed export --format csv -o items.csv`', 'check-token command', '`--since`', '`--limit`', 'Global options (`--version`, `--config`)'."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "with_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 85.6,
+        "tokens": 44675,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": true,
+          "evidence": "'These goals pull in opposite directions: Reference documentation prioritizes completeness and lookup speed, not onboarding speed; Quickstart prioritizes time-to-first-value, which typically means omitting advanced options'."
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": false,
+          "evidence": "It names both types but does not recommend separate docs: 'Write a Quickstart that guides brand-new users ... while documenting every command and option inline'. Splitting is acknowledged ('guidance says ... propose splitting') then set aside: 'here's the best single choice'."
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": false,
+          "evidence": "It describes the types' different priorities, but concludes a single quickstart works: 'ONE quickstart gives you speed and completeness in a single, focused doc' and 'you can document them all without bloating the quickstart'. It does not explain why a single doc serves both readers poorly."
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": false,
+          "evidence": "Recommendation is one doc: 'Recommended: Quickstart with Embedded Reference'. Two docs appear only under 'If You Change Your Mind'."
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Uses 'tidyfeed fetch' with '--since' and '--limit (default 50)', 'tidyfeed export --format json|csv|markdown -o feed.json', 'tidyfeed check-token', '--version', '--config', Python 3.14+ — matching cli.py and pyproject.toml."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "with_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 62.3,
+        "tokens": 35940,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": true,
+          "evidence": "'You're asking for one document that serves two readers with different priorities: 1. Brand-new users: Need to see their first export in under 2 minutes (speed matters) 2. Users looking things up later: Need every command and option documented in full (completeness matters)'"
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": false,
+          "evidence": "It recommends one doc: 'Recommendation: How-To + Reference ... Write a How-To guide ... with this adaptation' adding a 'Complete Commands Reference' section to the same doc. It never names a quickstart/getting-started doc and explicitly rejects splitting: 'You wouldn't—the single how-to + reference satisfies both goals.'"
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": false,
+          "evidence": "It notes 'These goals normally conflict' but immediately concludes 'tidyfeed's workflow is simple enough to satisfy both in one doc' and argues 'one doc with clear section breaks works better'. It argues the opposite of the expectation."
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": false,
+          "evidence": "Recommendation is a single doc: 'the single how-to + reference satisfies both goals'. Separate docs are mentioned only as something 'you might split later' for 'a larger tool'."
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Plan lists 'fetch', 'export', 'check-token', '--since ISO_DATE', '--limit N (default: 50)', '--format [json|csv|markdown] (default: json)', '--output/-o <file> (required)', '--config <path>', '--version' — all match cli.py."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 8,
+        "failed": 2,
+        "total": 10,
+        "time_seconds": 53.8,
+        "tokens": 31847,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "The numbered steps (Install, Get an API Token, Create Your Configuration File, Verify, Fetch, then 'Step 6: Export to Markdown' with 'tidyfeed export --format markdown --output my_reading_list.md') build one Markdown reading list. The later 'Tips and Tricks' and 'Troubleshooting' sections drift toward reference material, but the core is a tutorial built around one result."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": false,
+          "evidence": "Line 3 states the goal: 'This guide will teach you how to use tidyfeed to fetch articles from your favorite blogs and create a clean Markdown reading list.' Nothing says who the tutorial is for (for example, new users or an assumed skill level). There is only 'Welcome!'. The expectation requires both parts."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": false,
+          "evidence": "There is no up-front list of what the reader needs. Python 3.14 first appears inside 'Step 1: Install tidyfeed' ('First, make sure you have Python 3.14 or later'), and the account or token appears only in Step 2. The token rule allows a later step, but Python is never listed before the reader starts, so the prerequisites are scattered through the steps instead of listed."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "The token and feeds go into config.toml in Step 3, check-token runs in Step 4, fetch in Step 5, and 'export --format markdown' in Step 6."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "Step 4: 'You should see: `token OK`'. Step 5: 'You should see a message like: `fetched 98 items`'."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "'## Next Steps' gives the summary 'You now know how to:' (Install and configure, Fetch, Export to Markdown...) followed by 'From here, you can:' (add feeds, other formats, cron, edit lists)."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 0.7,
+        "passed": 7,
+        "failed": 3,
+        "total": 10,
+        "time_seconds": 59.7,
+        "tokens": 33000,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Opens with 'This tutorial will teach you how to use tidyfeed to build a reading list from your favorite blogs'; Steps 1-6 build reading-list.md via 'tidyfeed export --format markdown -o reading-list.md'. Extra Tips, Troubleshooting and a Command Reference are appended, but the main body is a tutorial building one result."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": false,
+          "evidence": "It states what the reader will learn ('This tutorial will teach you how to use tidyfeed to build a reading list...By the end of this tutorial, you'll have a clean Markdown file'), but never says who the tutorial is for. There is no audience statement such as 'for people new to tidyfeed'; 'Welcome!' does not name the reader."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "Prerequisites list 'Python 3.14 or later'; 'Step 2: Get an API Token' walks through creating one at Settings > API tokens (a later step counts)."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 3 puts token and feeds in config.toml; Step 4 'tidyfeed check-token'; Step 5 'tidyfeed fetch'; Step 6 'tidyfeed export --format markdown -o reading-list.md'."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "Step 1: 'You should see `tidyfeed 2.0.0`'; Step 4: 'If successful, you'll see: `token OK`'; Step 5: 'You should see output like: fetched 147 items'."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": false,
+          "evidence": "A summary with next steps exists ('## What's Next?': 'Congratulations! You've successfully: ...From here, you can: ...'), but the doc does not end there. It continues with a '## Command Reference' block and a closing 'Need help? Visit the Tidyfeed documentation' footer. Under strict reading, 'ends with a summary' is not met."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": false,
+          "evidence": "not in project files: ['https://docs.tidyfeed.example']"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 0.9,
+        "passed": 9,
+        "failed": 1,
+        "total": 10,
+        "time_seconds": 55.5,
+        "tokens": 32640,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+          "passed": true,
+          "evidence": "Titled 'Getting Started with tidyfeed: Build Your Reading List'; steps 1-5 build toward 'tidyfeed export --format markdown --output reading-list.md' and show the resulting list. It is a guided build, not a reference."
+        },
+        {
+          "text": "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+          "passed": false,
+          "evidence": "It states the outcome: 'This tutorial will guide you through creating a Markdown reading list from your favorite blogs. By the end, you'll have a clean, organized file...'. But it never says who the tutorial is for (no audience statement such as 'for people new to tidyfeed'); 'Welcome to tidyfeed!' only implies it. Ambiguous, so failed."
+        },
+        {
+          "text": "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+          "passed": true,
+          "evidence": "Prerequisites: '- Python 3.14 or later', '- pip (Python package manager)', '- A tidyfeed account and API token'."
+        },
+        {
+          "text": "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+          "passed": true,
+          "evidence": "Step 3 writes token and feeds into config.toml, then runs 'tidyfeed check-token'; Step 4 runs 'tidyfeed fetch'; Step 5 runs 'tidyfeed export --format markdown --output reading-list.md'. Order matches dependencies."
+        },
+        {
+          "text": "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+          "passed": true,
+          "evidence": "Step 3: 'You should see `token OK`.' Step 4: 'You should see output like: fetched 42 items'. Step 5 also shows sample Markdown output."
+        },
+        {
+          "text": "It ends with a summary of what the reader built or learned and points to next steps",
+          "passed": true,
+          "evidence": "Ends with 'Happy reading!': 'You've successfully set up tidyfeed and created your first reading list. Now you can: ...' plus 'Step 6: Next Steps' and 'Learn More' pointing to config.example.toml and further usage."
+        },
+        {
+          "text": "[script] No TGDP template placeholders or boilerplate remain",
+          "passed": true,
+          "evidence": "no template leftovers found"
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        },
+        {
+          "text": "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+          "passed": true,
+          "evidence": "no invented project URLs"
+        },
+        {
+          "text": "[script] No invented TIDYFEED_* environment variables",
+          "passed": true,
+          "evidence": "only TIDYFEED_TOKEN used"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 2,
+        "failed": 4,
+        "total": 6,
+        "time_seconds": 53.2,
+        "tokens": 32008,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": false,
+          "evidence": "The response never states that the request combines two different reader goals or that they conflict. It lays out 'Section 1: Quick Start (2-minute path to first export)' and 'Section 4: Complete Command Reference' as parts of one README without identifying the tension; the only framing is 'Single document – No navigation between files; everything is in one place.' Implicit at best, so failed."
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": false,
+          "evidence": "'Write ONE document: a comprehensive README.md'. Quick Start and Command Reference are sections of the single README, not separate docs."
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": false,
+          "evidence": "No explanation of why a single doc serves both readers poorly; it argues the opposite ('Single document – No navigation between files; everything is in one place')."
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": false,
+          "evidence": "Recommendation is explicitly one doc: 'Recommended Documentation: Single Comprehensive README'."
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Uses 'tidyfeed fetch' (--since, --limit default 50), 'tidyfeed export' (--format {json|csv|markdown}, --output/-o required), 'tidyfeed check-token' ('token OK' exit 0 / 'token rejected (401)' exit 1), TIDYFEED_TOKEN, api_url default — matching the source."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "without_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 60.2,
+        "tokens": 32742,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": true,
+          "evidence": "'This combines two fundamentally different documentation goals ... 1. New user goal: Get to first success as fast as possible (under 2 minutes) 2. Lookup goal: Find complete information about every command and option when needed'"
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": true,
+          "evidence": "'Two separate docs: 1. Quickstart — Get to first export in < 2 minutes 2. Command Reference — Document every command and option in full'; sections 'Document 1: Quickstart / Getting Started Guide' and 'Document 2: Command Reference'."
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": true,
+          "evidence": "'Why a Single Doc Fails' section: 'Burying this in a getting-started guide buries the option reference under introductory prose, making lookup slow and error-prone' and 'Quickstart: Sequential task-based ... Reference: Organized by command ... Trying to do both means doing neither well.'"
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": true,
+          "evidence": "Summary: 'Two separate docs'. The fallback is labelled 'The Single-Doc Fallback (If Required)' and 'But this is a compromise ... It's slower than two docs for both audiences.'"
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Reference covers 'tidyfeed fetch' (--since, --limit default 50), 'tidyfeed export' (--format {json|csv|markdown} default json, --output/-o required), 'tidyfeed check-token', global '--config' and '--version', TIDYFEED_TOKEN lookup order — all match cli.py/config.py."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "without_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 94.0,
+        "tokens": 37231,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": true,
+          "evidence": "response.md names both goals separately: '1. **Quick Start goal** (first export <2 min): New users read only the first 3 sections...' and '2. **Complete reference goal** (every command/option documented)'. It recognizes the two reader goals, though it concludes one doc can serve both."
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": false,
+          "evidence": "It explicitly rejects separate docs: '**Not separate docs**: Combining into ONE eliminates maintenance burden' and under alternatives: '**Separate Quick Start + API Reference**: Maintenance burden ... user confusion'. It recommends 'ONE Integrated README with Quick Start + Full Reference'."
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": false,
+          "evidence": "It argues the opposite: 'This single document serves both goals' and 'Everything stays in one place — easier to maintain, easier to find'. No explanation of why a single doc serves both readers poorly."
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": false,
+          "evidence": "The recommendation is a single doc: '**Write ONE document:** An integrated README.md with quick-start at the top ... followed by detailed reference sections'. The combined doc is the recommendation, not a fallback."
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Plan lists real commands and flags: '`tidyfeed fetch` ... `--since DATE` ... `--limit N` (default: 50)', '`tidyfeed export` ... `--format {json|csv|markdown}` ... `--output FILE` / `-o FILE`', '`tidyfeed check-token`', global '--config PATH', '--version' — all present in cli.py."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.2739,
+        "min": 0.5,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 75.05,
+        "stddev": 11.894,
+        "min": 59.3,
+        "max": 86.8
+      },
+      "tokens": {
+        "mean": 42384.1667,
+        "stddev": 4024.5017,
+        "min": 35940,
+        "max": 47522
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.705,
+        "stddev": 0.2517,
+        "min": 0.33,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 62.7333,
+        "stddev": 15.5964,
+        "min": 53.2,
+        "max": 94.0
+      },
+      "tokens": {
+        "mean": 33244.6667,
+        "stddev": 2002.5897,
+        "min": 31847,
+        "max": 37231
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.05",
+      "time_seconds": "+12.3",
+      "tokens": "+9140"
+    }
+  },
+  "notes": [
+    "The tutorial and doc-type tasks on Haiku 4.5, with the skill at ef4096b and without it, 3 runs each.",
+    "Tutorial: 100% with the skill, 80% without. Without the skill, no run (0 of 3) passed the check for saying up front what the reader will learn and who the tutorial is for.",
+    "Doc-type: 50% with the skill, 61% without. With the skill, none of the 3 runs recommended two separate docs. This led to the split rule in 87a01f6; see haiku-split-old-vs-new.json.",
+    "Graded blind by claude-opus-5-5."
+  ]
+}

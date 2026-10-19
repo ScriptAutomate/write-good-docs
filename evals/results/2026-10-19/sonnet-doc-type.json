@@ -1,0 +1,187 @@
+{
+  "metadata": {
+    "skill_name": "write-good-docs",
+    "skill_path": "https://github.com/ScriptAutomate/write-good-docs/tree/87a01f6",
+    "executor_model": "claude-sonnet-5",
+    "analyzer_model": "claude-opus-5-5",
+    "timestamp": "2026-10-19T15:22:50Z",
+    "evals_run": [
+      6
+    ],
+    "runs_per_configuration": 3,
+    "grader_model": "claude-opus-5-5"
+  },
+  "runs": [
+    {
+      "eval_id": 6,
+      "configuration": "new_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 190.0,
+        "tokens": 75353,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": true,
+          "evidence": "'\"First export in under two minutes\" and \"every command and option in full\" are two different reader goals' -- quickstart 'shows the shortest path to one result'; reference is 'a flat, scannable list of every command, option, and config field'."
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": true,
+          "evidence": "'Don't write one doc for this — write two: a **quickstart** and a **reference**.' Drafts quickstart.md and reference.md."
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": true,
+          "evidence": "'Cramming both into one doc means either the fast path gets buried under option tables the brand-new reader doesn't need yet, or the full option list gets thinned out to keep the doc short — degrading whichever goal loses.'"
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": true,
+          "evidence": "Main recommendation is two docs ('write two'); no single-doc fallback offered as the recommendation."
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Quickstart steps: `tidyfeed check-token`, `tidyfeed fetch`, `tidyfeed export --format csv -o items.csv`; reference covers fetch (--since, --limit), export (--format, --output/-o), check-token, --version, --config — matching cli.py."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "new_skill",
+      "run_number": 2,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 189.6,
+        "tokens": 74895,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": true,
+          "evidence": "Opening paragraph: '\"first export in under two minutes\" and \"every command and option in full\" are two different reader goals' -- a quickstart 'has to stay short enough to finish in minutes' vs a reference that 'has to be complete and scannable'."
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": true,
+          "evidence": "'I'd write **two** docs instead of one: a **quickstart** and a **reference**.' Drafts quickstart.md and cli-reference.md."
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": true,
+          "evidence": "'every optional flag, every config key, every exit code you add is something the brand-new reader has to step over to reach their first export... Bolting both onto one page as two sections isn't a real split — the quickstart would still be long.'"
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": true,
+          "evidence": "Main recommendation is two docs ('two docs instead of one'); it explicitly rejects a sectioned single doc. No single-file fallback is recommended."
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Quickstart uses `tidyfeed fetch`, `tidyfeed export --format json -o items.json`, and mentions `tidyfeed check-token`; reference covers fetch (--since, --limit), export (--format, --output/-o), check-token, --version, --config, all matching cli.py."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 6,
+      "configuration": "new_skill",
+      "run_number": 3,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 269.3,
+        "tokens": 79147,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+          "passed": true,
+          "evidence": "'\"First export in under two minutes\" and \"every command and option in full\" are two different reader goals' -- quickstart 'shows the shortest path to one result' vs reference 'deliberately exhaustive and non-procedural'."
+        },
+        {
+          "text": "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+          "passed": true,
+          "evidence": "'I'd recommend **two** docs here, not one: a **quickstart** and a **command reference**.' Drafts quickstart_tidyfeed.md and reference_tidyfeed.md."
+        },
+        {
+          "text": "It explains why a single doc would serve both readers poorly",
+          "passed": true,
+          "evidence": "'it makes the quickstart reader wade through tables they don't need yet, and makes the reference reader wade through a procedure they've already done. Sectioning the same doc ... is the same problem with headings instead of files.'"
+        },
+        {
+          "text": "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+          "passed": true,
+          "evidence": "'So: two files, linked from each other.' Single sectioned doc is explicitly rejected; no single-doc fallback recommended."
+        },
+        {
+          "text": "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+          "passed": true,
+          "evidence": "Quickstart: `tidyfeed check-token`, `tidyfeed fetch`, `tidyfeed export --format csv -o items.csv`, `tidyfeed --version`; reference documents fetch/export/check-token with --since, --limit, --format, --output/-o, --config — all in cli.py."
+        },
+        {
+          "text": "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+          "passed": true,
+          "evidence": "all flags and subcommands exist in cli.py"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "new_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 216.3,
+        "stddev": 45.8998,
+        "min": 189.6,
+        "max": 269.3
+      },
+      "tokens": {
+        "mean": 76465.0,
+        "stddev": 2333.9417,
+        "min": 74895,
+        "max": 79147
+      }
+    }
+  },
+  "notes": [
+    "The doc-type task on Sonnet 5 with the split rule (87a01f6), 3 runs. No earlier Sonnet score exists for this task.",
+    "100%. All 3 runs recommended a separate quickstart and reference, and drafted both.",
+    "Graded blind by claude-opus-5-5."
+  ]
+}

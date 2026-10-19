@@ -73,11 +73,13 @@ The `evals/` folder holds a benchmark. It checks whether the skill makes
 an agent write better docs than the same agent without the skill. It
 contains:
 
-- `evals/evals.json`: four realistic requests, each with the checks a
+- `evals/evals.json`: six realistic requests, each with the checks a
   good answer must pass. Each one tests something the skill measurably
   improves: build a README from project facts, write a how-to as a real
-  numbered procedure, curate release notes from a commit log, and review
-  a weak README by ranking its gaps.
+  numbered procedure, curate release notes from a commit log, review
+  a weak README by ranking its gaps, write a tutorial that builds one
+  result, and recommend separate docs when asked for one doc that
+  serves two reader goals.
 - `evals/files/tidyfeed/`: a small, made-up command-line tool. The
   requests are about this tool, so a doc that invents a flag, an
   environment variable or a URL can be caught.

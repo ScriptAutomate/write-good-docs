@@ -24,6 +24,7 @@ TEMPLATE_FOR = {
     "readme-from-project": "readme/template_readme.md",
     "howto-rotate-token": "how-to/template_how-to.md",
     "release-notes-from-log": "release-notes/template_release-notes.md",
+    "tutorial-first-reading-list": "tutorial/template_tutorial.md",
 }
 # Lines running other tools, whose flags aren't tidyfeed's.
 OTHER_TOOL = re.compile(r"^\s*(?:\$\s*)?(?:pip|pipx|python3?|git|cp|cd|mkdir|export|curl)\b")

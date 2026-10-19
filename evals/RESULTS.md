@@ -53,7 +53,7 @@ Raw results are in [`results/2026-10-18/`](results/2026-10-18/).
 |---|---|
 | Date | 2026-10-15 |
 | Skill version | commit [`9d7245d`](https://github.com/ScriptAutomate/write-good-docs/tree/9d7245d), The Good Docs Project templates v1.6.0 |
-| Tasks | The four tasks in [`evals.json`](evals.json): write a README, write a how-to, write release notes from a git log, and review a weak README. All are about the test project in [`files/tidyfeed/`](files/tidyfeed/). |
+| Tasks | Tasks 1 to 4 in [`evals.json`](evals.json): write a README, write a how-to, write release notes from a git log, and review a weak README. All are about the test project in [`files/tidyfeed/`](files/tidyfeed/). |
 | Runs | Each task 3 times with the skill and 3 times without it, per model (24 runs per model) |
 | Grading | Blind: outputs were shuffled and anonymised, then graded by Claude Opus 5.5 against the checks in `evals.json`. Checks marked `[script]` were run by [`check_outputs.py`](check_outputs.py). |
 | Tooling | Anthropic's [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator), in Claude Code |

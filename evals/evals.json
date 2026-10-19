@@ -76,6 +76,44 @@
         "It flags missing installation steps or prerequisites (Python 3.14+, installing with pip)",
         "It flags that the config section lacks specifics, such as TIDYFEED_TOKEN, the config file path, or config.example.toml"
       ]
+    },
+    {
+      "id": 5,
+      "name": "tutorial-first-reading-list",
+      "prompt": "We'd like a tutorial for people who have never used tidyfeed (it's in evals/files/tidyfeed/). Have them learn how it works by building a Markdown reading list from a couple of blogs they follow.",
+      "expected_output": "A learning-oriented tutorial: says what the reader will learn and who it's for, lists what they need first, follows one path that builds the reading list end to end in tidyfeed's real order, shows the result of key steps, and ends with a summary and next steps.",
+      "files": [
+        "evals/files/tidyfeed/"
+      ],
+      "expectations": [
+        "The doc is a tutorial that teaches by building one concrete result (a Markdown reading list), not a reference page or a bare list of commands",
+        "It states up front what the reader will learn or be able to do, and who the tutorial is for",
+        "It lists what the reader needs before starting: Python 3.14 or later, and a Tidyfeed account or API token (creating the token in a later step counts)",
+        "The steps follow tidyfeed's real dependencies: the token is set before check-token, feeds are configured before fetch, and fetch runs before export --format markdown",
+        "At least two steps show or describe what the reader should see when the step works (for example 'token OK' or 'fetched N items')",
+        "It ends with a summary of what the reader built or learned and points to next steps",
+        "[script] No TGDP template placeholders or boilerplate remain",
+        "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py",
+        "[script] No invented project URLs (repo, package index, or tidyfeed hosts) unless marked TODO",
+        "[script] No invented TIDYFEED_* environment variables"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "choose-doc-type-mixed-request",
+      "prompt": "For tidyfeed (evals/files/tidyfeed/), we want ONE doc that gets brand-new users to their first export in under two minutes AND documents every command and option in full. What should we write?",
+      "expected_output": "Advice, not a combined doc: recognises two different reader goals, recommends a quickstart (or getting-started doc) and a reference, explains why one doc would serve both readers poorly, and grounds the plan in tidyfeed's real commands.",
+      "files": [
+        "evals/files/tidyfeed/"
+      ],
+      "expectations": [
+        "It identifies that the request combines two different reader goals: the fastest path to a first result, and complete lookup of every command and option",
+        "It recommends separate docs and names both types: a quickstart (or getting-started doc) and a reference",
+        "It explains why a single doc would serve both readers poorly",
+        "Its recommendation is two separate docs. Drafting both, or mentioning a single-file fallback, is fine as long as the fallback isn't the recommendation",
+        "Its plan uses tidyfeed's real commands, for example fetch, export and check-token",
+        "[script] Every tidyfeed subcommand and flag shown exists in tidyfeed/cli.py"
+      ]
     }
   ]
 }

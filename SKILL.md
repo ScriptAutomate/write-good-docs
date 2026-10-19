@@ -102,10 +102,13 @@ Each type dir holds `<role>_<type>.<ext>`. Not every type has all five.
 1. **Pick the type before writing anything.** Use the tables above.
    If you were invoked as `/write-good-docs <args>` and the first word
    names a content type (e.g. `how-to`, `readme`), use that type and
-   treat the rest as the subject. If the request spans several types (a README that wants to be a
-   quickstart too), say so and propose splitting — each template
-   is designed around one reader goal, and a doc serving two serves
-   both badly.
+   treat the rest as the subject.
+   If the request asks one doc to serve two reader goals (for example,
+   a README that should also teach the product step by step), recommend
+   separate docs and name their types, even when the user asked for
+   one. Each template is designed around one reader goal, and a doc
+   serving two serves both badly. One doc with a section for each goal
+   is not a split. Explain why, then offer to draft each doc.
 2. **Read `guide_` before `template_`.** The guide explains what each
    section must achieve; without it the template is just headings, and
    headings get filled with filler. Read `example_` too when one exists
@@ -146,6 +149,8 @@ Each type dir holds `<role>_<type>.<ext>`. Not every type has all five.
      "Option A/B" blocks; readers lose their place in the sequence.
    - Where two settings interact (one overrides another, one must run
      first), say which wins. That's the fact readers get wrong.
+   - If the request mixed two reader goals, your answer recommends
+     separate docs rather than one doc with sections (step 1).
    - The type-specific rules below hold.
 9. **For reviews, compare against the guide.** When asked "is this doc
    good / missing anything", identify its type, then report which guide

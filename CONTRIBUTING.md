@@ -62,10 +62,42 @@ templates.
    scripts/check-leftovers.sh references/readme/template_readme.md README.md
    ```
 
-3. Start a new agent session and try the skill on a real request, such
+3. Validate the skill. See [Validate the skill](#validate-the-skill).
+4. Start a new agent session and try the skill on a real request, such
    as `/write-good-docs how-to <task>` in Claude Code.
-4. If you changed `SKILL.md`, re-run the benchmark. See
+5. If you changed `SKILL.md`, re-run the benchmark. See
    [Measure the skill](#measure-the-skill).
+
+## Validate the skill
+
+[skill-validator](https://github.com/agent-ecosystem/skill-validator)
+checks the skill against the Agent Skills spec and reports its token
+cost. Run it from the folder that contains your clone:
+
+```bash
+skill-validator check --allow-extra-frontmatter --skip-orphans \
+  --allow-nested-paths=references \
+  --allow-dirs=evals,maintainer --exclude-token-paths=evals,maintainer \
+  write-good-docs
+```
+
+The clone's folder must be named `write-good-docs`, which is what
+`git clone` creates by default. The validator fails if the folder name
+doesn't match the skill's `name`.
+
+The flags accept choices this repository makes on purpose:
+
+| Flag | Why |
+|---|---|
+| `--allow-extra-frontmatter` | `argument-hint` is a Claude Code field that the spec doesn't define. |
+| `--skip-orphans` | `SKILL.md` links each `references/<type>/` folder and explains its file names, rather than linking every file. |
+| `--allow-nested-paths=references` | TGDP files are grouped in one folder per content type. |
+| `--allow-dirs`, `--exclude-token-paths` | `evals/` and `maintainer/` are for maintainers. Agents never load them. |
+
+Expect three warnings, for `README.md`, `CONTRIBUTING.md` and `LICENSE`,
+because the repository root is also the skill folder. With only those
+warnings, the command exits with `2`. Treat anything else as a problem
+to fix.
 
 ## Measure the skill
 

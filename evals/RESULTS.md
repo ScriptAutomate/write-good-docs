@@ -5,6 +5,51 @@ the measured answer for each model tested. Each section is a dated
 snapshot, newest first: re-run the benchmark whenever `SKILL.md` changes
 and add a new dated results folder.
 
+## 2026-10-21: when the skill triggers
+
+The earlier sections measure the docs an agent writes once it uses the
+skill. This one measures whether the agent uses the skill at all. Claude
+decides that from the skill's `description` alone.
+
+[`trigger-evals.json`](trigger-evals.json) holds 20 requests. 10 should
+use the skill: release notes, a how-to, contributor files, a README
+review, a tutorial, a config reference, "which doc should I write?",
+a troubleshooting page, a concept explainer and a code of conduct. 10
+are near-misses that shouldn't: docstrings, a commit message, README badge
+fixes, docs-site setup, a blog post, a PR description, a Word document, a
+translation, an OpenAPI fix and a summary. Each request ran 3 times per
+model in headless Claude Code (`claude -p`). A request passes when it
+triggers in at least 2 of 3 runs, or, for a near-miss, in at most 1.
+
+| Model | Should use the skill | Near-misses left alone | Pass |
+|---|---|---|---|
+| Opus 5.5 | 10 of 10 | 10 of 10 | 20/20 |
+| Sonnet 5 | 10 of 10 | 10 of 10 | 20/20 |
+| Haiku 4.5 | 5 of 10 | 10 of 10 | 15/20 |
+
+No model used the skill for a near-miss in any run. Haiku skipped it for
+release notes and the README review in all 3 runs, and used it in only 1
+of 3 runs for contributor files, the concept explainer and the code of
+conduct. The description names release notes, README reviews and codes
+of conduct explicitly, so Haiku seems to decide it can write these
+without help rather than fail to match them. The description wasn't
+changed: it already works for Opus and Sonnet.
+
+These runs used skill-creator's `run_eval.py` with three fixes. Without
+them, the results would be wrong:
+
+- **Parallel runs:** every run wrote its copy of the skill into one
+  shared `.claude/commands/` folder, so a run could use another run's
+  copy and be scored as not triggering. Each run now gets its own folder.
+- **First tool only:** a run was scored as not triggering if its first
+  tool call wasn't the skill, even if it used the skill next. The whole
+  run is now checked.
+- **Failed runs:** a run that failed, for example on a usage limit, was
+  scored as not triggering. It's now reported as a failure. One Opus pass
+  hit a usage limit and was re-run in full.
+
+Raw results are in [`results/2026-10-21/`](results/2026-10-21/).
+
 ## 2026-10-19: tutorial and doc-type tasks, and the split rule
 
 This round added two tasks to [`evals.json`](evals.json): task 5 writes a

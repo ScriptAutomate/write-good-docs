@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "skill_path": "https://github.com/ScriptAutomate/write-good-docs/tree/53f7364",
+    "model": "claude-sonnet-5",
+    "eval_set": "evals/trigger-evals.json",
+    "runs_per_query": 3,
+    "trigger_threshold": 0.5,
+    "timeout_seconds": 90
+  },
+  "skill_name": "write-good-docs",
+  "description": "Drafts and reviews software docs using The Good Docs Project templates and guides — picks the right content type (README, how-to, tutorial, concept, reference, release notes, API docs, community docs, and more), then fills it from real project facts. Use when asked to write, draft, restructure, or review a doc — e.g. \"write a README for X\", \"draft a how-to / tutorial\", \"write release notes / a changelog\", \"add a CONTRIBUTING guide / code of conduct\", \"document this API\", \"is this README missing anything\", or \"which kind of doc should I write\".",
+  "results": [
+    {
+      "query": "I maintain a small open source Rust crate (ratelimit-rs, ~400 stars) and people keep opening issues asking how to contribute and what the PR process is. We run cargo fmt + clippy in CI and squash-merge PRs. What files should a project like this have for contributors? Draft them.",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "we just tagged v3.2.0 of our terraform provider and the PM wants something for the customer newsletter. git log v3.1.0..v3.2.0 --oneline:\n\n9f1c2aa feat(resource): add acme_bucket_policy resource\n41b7e0d ci: bump actions/setup-go to v5\n77de1c3 fix(provider): retry on 429 instead of failing the apply\nc0a9b12 chore: regenerate docs\n2e8f6d4 feat(data): acme_regions data source\n5ab3c90 test: add acceptance tests for bucket lifecycle\nd13e7f2 fix(bucket): import no longer drops versioning settings\n8c4410b refactor: split client into separate package\n\ncan you turn this into something customers would actually read?",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "here's the README for our payments-gateway service. it feels off but I can't say why. what's missing or in the wrong place? don't rewrite it yet, just tell me\n\n# payments-gateway\nBuilt with Go 1.23, gRPC, Postgres and Redis. Uses the hexagonal architecture pattern.\n\n## Running\nmake run\n\n## Env vars\nPG_URL, REDIS_URL, STRIPE_KEY\n\n## License\nproprietary",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Our internal CLI `dbsnap` has no docs except its --help:\n\n  dbsnap list                  list snapshots\n  dbsnap restore SNAPSHOT_ID --target URL [--schema NAME]\n  dbsnap verify SNAPSHOT_ID\n\nNew hires keep asking how to restore a snapshot into a local postgres container (docker run -p 5432:5432 postgres:16). Write up the steps for that one task so I can link it in onboarding.",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Need a reference page for every key in our app's settings.yaml so people stop guessing values:\n\nserver:\n  port: 8080\n  read_timeout: 30s\ncache:\n  backend: redis   # or memory\n  ttl: 300\nauth:\n  provider: oidc\n  issuer_url: \"\"\n  allowed_groups: []\n\nFor each: type, default, what it does.",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "I want to teach the data analysts on my team our internal `metricflow` python library (it loads metrics from our warehouse and plots them: mf.connect(), mf.query('revenue', by='month'), mf.plot()). They've never touched it. Write a hands-on walkthrough where they build a small monthly revenue dashboard end to end.",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "my manager asked for 'docs' for the event-bus service and I genuinely don't know whether that means a README, an architecture overview, a runbook, or something else. the audience is other backend teams who'd publish events to it. what should I actually write first?",
+      "should_trigger": true,
+      "trigger_rate": 0.6666666666666666,
+      "triggers": 2,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "We keep getting the same support tickets about our desktop sync app: (1) stuck at 'Indexing…' after an update — fix is deleting the index cache folder; (2) login loops on macOS — fix is removing the old keychain entry; (3) 403 on shared folders — the owner has to re-share after the permissions migration. Write a help page that walks users through fixing these themselves.",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "our discord community for the open source game engine grew to 3k people and we've had a couple of ugly incidents. we need a code of conduct and some kind of process for how mods handle reports. can you draft those?",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Add Google-style docstrings to this function, args/returns/raises, don't change the logic:\n\ndef apply_discount(invoice, code, now=None):\n    now = now or datetime.utcnow()\n    promo = PROMOS.get(code)\n    if promo is None or promo.expires < now:\n        raise InvalidPromo(code)\n    invoice.total = round(invoice.total * (1 - promo.rate), 2)\n    return invoice",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Write an explainer for our docs site on how our CRDT-based offline sync works and why we chose it over last-write-wins. Not a how-to, more the background people need before they read the API docs.",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Write a commit message for this change: retry logic in http_client.go now backs off exponentially (max 5 tries) instead of retrying immediately, and I renamed client_test.go to http_client_test.go.",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "The README badges for CI and coverage broke when we moved from Travis to GitHub Actions. Current lines are [![Build](https://travis-ci.org/acme/widgets.svg?branch=main)] and a coveralls badge. Give me the replacement markdown for GitHub Actions (workflow file is ci.yml) and Codecov.",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Draft a blog post announcing our Series A for the company blog — upbeat, ~600 words, mention we're hiring in Berlin and Toronto.",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "can you write the PR description for my branch? it adds cursor pagination to the /orders endpoint and fixes the N+1 query in OrderSerializer by prefetching line items",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "set up mkdocs-material for a repo: nav that picks up everything under docs/, dark mode toggle, and a github action that deploys to gh-pages on push to main. give me mkdocs.yml and the workflow file",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Translate this into Japanese and Brazilian Portuguese, keep the code block unchanged:\n\n## Getting started\nInstall the CLI, then log in:\n```\nnpm i -g acme-cli\nacme login\n```\nYou're ready to deploy.",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Our OpenAPI spec fails validation in CI with 'components.schemas.Order.properties.items: should be object'. The snippet is:\n\nOrder:\n  type: object\n  properties:\n    items:\n      - $ref: '#/components/schemas/LineItem'\n\nwhat's wrong and what should it be?",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "summarize this ADR for me in 3 bullets, meeting in 10 min: 'We will adopt event sourcing for the ledger service. Every balance change is stored as an immutable event; balances are projections rebuilt from events. This gives a full audit trail and lets us replay history, at the cost of more complex reads and a migration of 40M existing rows.'",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Turn these meeting notes into a Word document with headings and a table of action items, I need to email it to the client by 3pm:\n\n- kickoff with Northwind, 14 Oct\n- scope: migrate 3 reporting dashboards\n- Dana to send data dictionary by Fri\n- we deliver wireframes 28 Oct\n- next sync 21 Oct",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0
+  }
+}

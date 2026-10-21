@@ -135,6 +135,22 @@ in Claude Code:
 A change to `SKILL.md` shouldn't lower the with-skill pass rate. Mention
 the before and after pass rates in your pull request.
 
+### Check when the skill triggers
+
+`evals/trigger-evals.json` lists requests that should and shouldn't make
+an agent use the skill. If you change the `description` in `SKILL.md`,
+run them with skill-creator's `scripts/run_eval.py` on each model you
+care about, and compare with the latest trigger results in
+[`evals/RESULTS.md`](evals/RESULTS.md).
+
+Run it from an empty folder outside any project that already has this
+skill installed, or the installed copy competes with the one under test.
+`run_eval.py` has three problems that skew results: parallel runs share
+one commands folder, only the first tool call is checked, and failed runs
+count as not triggering. Apply the fixes described in `RESULTS.md`
+before you trust the numbers. `--num-workers 1` avoids only the first
+problem.
+
 ## Refresh the templates
 
 When TGDP publishes a new release tag:
